@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=Label
+comment0.target=Displayer
 comment0.text=\n\ Write\ a\ description\ of\ class\ Time_Label\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
-comment1.target=Label()
+comment1.target=Displayer()
 comment1.text=\n\ Store\ the\ initial\ value\ of\ the\ label\ \n\ @param\ value\ Initial\ value\ of\ the\ label\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)

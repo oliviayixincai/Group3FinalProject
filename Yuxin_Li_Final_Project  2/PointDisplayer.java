@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PointDisplayer extends Label
+public class PointDisplayer extends Displayer
 {
     /**
      * Act - do whatever the PointDisplayer wants to do. This method is called whenever

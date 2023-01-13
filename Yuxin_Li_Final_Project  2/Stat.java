@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Stat extends Label
+public class Stat extends Displayer
 {
     /**
      * Act - do whatever the Stat wants to do. This method is called whenever

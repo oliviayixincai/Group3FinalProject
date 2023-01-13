@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TimeDisplayer extends Label
+public class TimeDisplayer extends Displayer
 {
     /**
      * Act - do whatever the TimeDisplayer wants to do. This method is called whenever

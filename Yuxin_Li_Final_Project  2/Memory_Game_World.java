@@ -97,7 +97,7 @@ public class Memory_Game_World extends World
             }
             
         }
-        if(90-getTimeInSeconds()>0){
+        if(60-getTimeInSeconds()>0){
             endTime=System.nanoTime();
             timeDisplay.setDisplayer(60-getTimeInSeconds());
         }
