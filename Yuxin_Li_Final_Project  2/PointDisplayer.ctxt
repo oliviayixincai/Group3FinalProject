@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PointDisplayer
-comment0.text=\n\ Write\ a\ description\ of\ class\ PointDisplayer\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ PointDisplayer\ here.\n\ \n\ @Yuxin\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=value
 comment1.target=PointDisplayer(int)
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ PointDisplayer\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n

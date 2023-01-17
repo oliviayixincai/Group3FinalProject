@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class card here.
  * 
- * @author (your name) 
+ * @Yuxin (your name) 
  * @version (a version number or a date)
  * question mark: https://www.pinterest.com/pin/267542034093060703/
  */

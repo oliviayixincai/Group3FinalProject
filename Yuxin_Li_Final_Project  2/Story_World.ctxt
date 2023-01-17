@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Story_World
+comment0.text=\n\ Write\ a\ description\ of\ class\ Story_World\ here.\n\ \n\ @Yuxin\ Li\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ \n\ get\ married\ picture\ by\ RapidEye\n\ https\://www.istockphoto.com/photo/male-and-female-hands-clasped-gm931136214-255235764\n\ \n\ pregnant\ picture\n\ https\://www.madeformums.com/pregnancy/early-pregnancy-tests-are-giving-too-many-false-results/\n\ \n\ hospital\ picture\n\ https\://unsplash.com/s/photos/hospital-room\n\ \n\ welcome\ picture\ by\ dpproductions\n\ https\://www.istockphoto.com/photos/front-door\n\ \n\ story\ block\ by\ user2104819\n\ https\://www.freepik.com/premium-vector/set-ui-elements-2d-games-apps-jungle-game-ui-part-2_4267333.htm\n\ \n\ arrows\ by\ user22934206\n\ https\://www.freepik.com/premium-vector/collection-set-wooden-game-ui-frame-template-pop-up-interface-gui-asset-elements_11707777.htm\#from_view\=detail_alsolike\n
+comment1.params=
+comment1.target=Story_World()
+comment1.text=\n\ \n\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=int\ getClickIndex()
+comment4.params=num
+comment4.target=void\ setClickIndex(int)
+comment5.params=
+comment5.target=void\ setStory()
+numComments=6

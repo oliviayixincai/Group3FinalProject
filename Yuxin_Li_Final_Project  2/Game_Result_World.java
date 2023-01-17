@@ -1,22 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Game_Result_World here.
+ * Tell the player their score after finishing the flip card game
  * 
- * @author (your name) 
+ * @Yuxin (your name) 
  * @version (a version number or a date)
  */
 public class Game_Result_World extends World
 {
-
-    /**
-     * Constructor for objects of class Game_Result_World.
-     * 
-     */
+    
     private int result_points;
     private int total_time;
     private boolean on_time;
     private Color transparent = new Color(0,0,0,0);
+    /**
+     * Constructor for objects of class Game_Result_World.
+     * Check whether players get all the pairs in the game, and display
+     * whether they finished the game or not.
+     */
     public Game_Result_World(int points, int time_taken, boolean success)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.

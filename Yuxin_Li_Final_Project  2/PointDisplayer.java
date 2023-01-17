@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class PointDisplayer here.
  * 
- * @author (your name) 
+ * @Yuxin (your name) 
  * @version (a version number or a date)
  */
 public class PointDisplayer extends Displayer

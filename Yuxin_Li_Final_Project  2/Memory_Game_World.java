@@ -3,9 +3,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Write a description of class MyWorld here.
+ * A flip card memory game that remove two cards that has the same picture.
+ * Player can flip two cards one time. If the cards have different pictures, 
+ * the cards will flip back. The goal is to remove all cards within one minute.
+ * The game will end after one minute regardless how many pairs the player 
+ * remove.
  * 
- * @author (your name) 
+ * @Yuxin Li(your name) 
  * @version (a version number or a date)
  * https://www.pinterest.ca/pin/587367976379616134/
  */
@@ -26,7 +30,8 @@ public class Memory_Game_World extends World
     private long endTime;
     private int points;
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor of memory game; add the cards and shuffle
+     * add the time and point displayers
      * 
      */
     public Memory_Game_World()
@@ -97,29 +102,47 @@ public class Memory_Game_World extends World
             }
             
         }
+        // update the time left to play the game
         if(60-getTimeInSeconds()>0){
             endTime=System.nanoTime();
             timeDisplay.setDisplayer(60-getTimeInSeconds());
         }
+        
         pointDisplay.setDisplayer(points);
+        
+        //if all pairs are removed, go to the result world
         if(points==12&&getTimeInSeconds()<60){
             Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true));
         }
+        
+        //if 60 seconds passed, exit game world and go to result world
         if(getTimeInSeconds()==60){
             Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false));
         }
     }
+    /**
+     *  if two cards do not match, start countdown
+     *  wait half a second for the cards to flip back
+     */
     public void countDown(){
         if(waittime>0){
             waittime--;
         }
     }
+    /**
+     * check if there are any cards left on the screen
+     * @return boolean true if there is no cards, false if there are cards left
+     */
     public boolean finished(){
         if(getObjects(Card.class).size()==0){
             return true;
         }
         return false;
     }
+    /**
+     * calculate the time passed
+     * @return int the time passed 
+     */
     public int getTimeInSeconds ()
     {
         return (int)((double)(endTime - startTime) / 1000000000.0);

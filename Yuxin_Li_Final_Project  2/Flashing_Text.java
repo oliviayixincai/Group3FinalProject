@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Flashing_Text here.
  * 
- * @author (your name) 
+ * @Yuxin (your name) 
  * @version (a version number or a date)
  */
 public class Flashing_Text extends Actor
@@ -12,7 +12,7 @@ public class Flashing_Text extends Actor
      * Act - do whatever the Flashing_Text wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private GreenfootImage textImage;
+    protected GreenfootImage textImage;
     private int time=3;
     private boolean flash=true;
     

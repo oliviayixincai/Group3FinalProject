@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=Game_Result_World
-comment0.text=\n\ Write\ a\ description\ of\ class\ Game_Result_World\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Tell\ the\ player\ their\ score\ after\ finishing\ the\ flip\ card\ game\n\ \n\ @Yuxin\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=points\ time_taken\ success
 comment1.target=Game_Result_World(int,\ int,\ boolean)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Game_Result_World.\n\ Check\ whether\ players\ get\ all\ the\ pairs\ in\ the\ game,\ and\ display\n\ whether\ they\ finished\ the\ game\ or\ not.\n
 numComments=2
