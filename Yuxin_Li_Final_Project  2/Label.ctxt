@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Label
+comment0.text=\n\ Write\ a\ description\ of\ class\ Time_Label\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Label()
+comment1.text=\n\ Store\ the\ initial\ value\ of\ the\ label\ \n\ @param\ value\ Initial\ value\ of\ the\ label\n
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ when\ the\ label\ is\ added\ to\ world,\ show\ the\ initial\ value\n
+comment3.params=newValue
+comment3.target=void\ setDisplayer(int)
+comment3.text=\n\ set\ the\ new\ value\ of\ displayer\ and\ update\ the\ displayer\n\ @param\ newValue\ new\ value\ of\ value\ \n
+comment4.params=
+comment4.target=int\ getValue()
+comment4.text=\n\ return\ the\ current\ value\ of\ label\n
+comment5.params=
+comment5.target=void\ updateImage()
+numComments=6
