@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Label extends Actor
+public abstract class LabelAbstract extends Actor
 {
     
     protected int value;
@@ -15,7 +15,7 @@ public abstract class Label extends Actor
      * Store the initial value of the label 
      * @param value Initial value of the label
      */
-    public Label(){
+    public LabelAbstract(){
         
     }
     
