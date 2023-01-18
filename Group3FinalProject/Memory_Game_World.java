@@ -11,7 +11,7 @@ import java.util.Collections;
  */
 public class Memory_Game_World extends World
 {
-    
+    private GreenfootImage background = new GreenfootImage("paper.jpg");
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
@@ -33,6 +33,7 @@ public class Memory_Game_World extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1); 
+        setBackground(background);
         for(int i=0; i<2; i++){
             all_cards.add("bunny");
             all_cards.add("cheetah");
