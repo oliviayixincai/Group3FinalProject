@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class PixelArt extends World
 {
     private int type;
+    private GreenfootImage background = new GreenfootImage("pixelArt.png");
     
     // Pixel art colours (RGB values)
     private static Color lightBlue = new Color(199, 249, 255); //c7f9ff
@@ -89,6 +90,8 @@ public class PixelArt extends World
     {    
         // Create a world with 1000x700 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1); 
+        
+        setBackground(background);
         
         finished = false;
         // Integer that randomizes the minigame's art.

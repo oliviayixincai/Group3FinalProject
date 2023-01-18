@@ -17,6 +17,7 @@ public class MainWorld extends World
     
     // TODO: temp for testing
     private Label statsLabel;
+    private Button playPixelArtButton;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -39,12 +40,19 @@ public class MainWorld extends World
         
         this.statsLabel = new Label(this.stats.getString());
         addObject(statsLabel, 100, 350);
+        
+        this.playPixelArtButton = new Button("playPixelArt.png");
+        addObject(playPixelArtButton, 100, 100);
     }
     
     public void act() {
         if (Greenfoot.mouseClicked(this.scheduleButton)) {
             ScheduleWorld sw = new ScheduleWorld(this);
             Greenfoot.setWorld(sw);
+        }
+        else if (Greenfoot.mouseClicked(this.playPixelArtButton)) {
+            PixelArt pr = new PixelArt();
+            Greenfoot.setWorld(pr);
         }
     }
     
