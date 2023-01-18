@@ -18,6 +18,7 @@ public class MainWorld extends World
     // TODO: temp for testing
     private Label statsLabel;
     private Button playPixelArtButton;
+    private Button playMemoryButton;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -43,6 +44,8 @@ public class MainWorld extends World
         
         this.playPixelArtButton = new Button("playPixelArt.png");
         addObject(playPixelArtButton, 100, 100);
+        this.playMemoryButton = new Button("playMemory.png");
+        addObject(playMemoryButton, 200, 100);
     }
     
     public void act() {
@@ -53,6 +56,10 @@ public class MainWorld extends World
         else if (Greenfoot.mouseClicked(this.playPixelArtButton)) {
             PixelArt pr = new PixelArt();
             Greenfoot.setWorld(pr);
+        }
+        else if (Greenfoot.mouseClicked(this.playMemoryButton)) {
+            Game_Intro_World giw = new Game_Intro_World();
+            Greenfoot.setWorld(giw);
         }
     }
     
