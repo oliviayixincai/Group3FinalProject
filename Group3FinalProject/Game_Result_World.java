@@ -43,8 +43,8 @@ public class Game_Result_World extends World
     public void act() {
         if (Greenfoot.mouseClicked(this)) {
             Stats_Board stats=main.returnStats();
-            stats.addPoints("Memory", result_points);
-            stats.addPoints("EQ", result_points);
+            stats.addPoints("Memory", result_points/2);
+            stats.addPoints("Creativity", result_points-result_points/2);
             Greenfoot.setWorld(main);
             
         }

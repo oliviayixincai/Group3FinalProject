@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Memory_Game_World
-comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ https\://www.pinterest.ca/pin/587367976379616134/\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ https\://www.pinterest.ca/pin/587367976379616134/\n\ \n\ "https\://www.freepik.com/free-vector/peach-background-vector-cute-desktop-wallpaper_18247639.htm\#query\=desktop%20wallpaper&position\=1&from_view\=keyword">Image\ by\ rawpixel.com</a>\ on\ Freepik\n
 comment1.params=mainWorld
 comment1.target=Memory_Game_World(MainWorld)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\n\ \n

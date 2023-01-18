@@ -13,7 +13,7 @@ public class Game_Intro_World extends World
      * Constructor for objects of class Game_Intro_World.
      * 
      */
-    private GreenfootImage background = new GreenfootImage("recycpap.jpg");
+    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
     private GreenfootImage welcomeText;
     private Flashing_Text flashText;
     private GreenfootImage clickImage;

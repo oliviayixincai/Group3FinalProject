@@ -8,10 +8,12 @@ import java.util.Collections;
  * @author (your name) 
  * @version (a version number or a date)
  * https://www.pinterest.ca/pin/587367976379616134/
+ * 
+ * "https://www.freepik.com/free-vector/peach-background-vector-cute-desktop-wallpaper_18247639.htm#query=desktop%20wallpaper&position=1&from_view=keyword">Image by rawpixel.com</a> on Freepik
  */
 public class Memory_Game_World extends World
 {
-    private GreenfootImage background = new GreenfootImage("paper.jpg");
+    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
