@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainWorld extends World
 {
-    private Stats stats = new Stats();
+    //private Stats stats = new Stats();
     
     private Button scheduleButton;
     
@@ -73,18 +73,8 @@ public class MainWorld extends World
         }
     }
     
-    public void finishSchedule(int IQ, int EQ, int creativity, int memory) {
-        this.round++;
-        this.stats.promote(IQ, EQ, creativity, memory);
-        this.roundLabel.updateLabel(this.round);
-    }
-    
     public int getRound() {
         return this.round;
-    }
-    
-    public Stats getStats() {
-        return this.stats;
     }
     
     public Stats_Board returnStats(){
