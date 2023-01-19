@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Story_World here.
+ * Story_World is an initial world that shows the player and intro story
+ * of the game. Players can click the button to flip pages.
  * 
  * @Yuxin Li 
  * @version (a version number or a date)
@@ -33,8 +34,8 @@ public class Story_World extends World
     private Arrow forward;
     private Arrow backward;
     /**
-     * 
-     *
+     * Story World constructor
+     * set the first page of story and add the flip page button
      */
     public Story_World()
     {    
@@ -59,13 +60,23 @@ public class Story_World extends World
             removeObject(backward);
         }
     }
+    /**
+     * get the current page number of story
+     * @return int the current page number 
+     */
     public int getClickIndex(){
         return clickIndex;
     }
+    /**
+     * set the page number 
+     */
     public void setClickIndex(int num){
         clickIndex=num;
-        
     }
+    /**
+     * flip the story page by setting a new background and add the 
+     * corresponding story
+     */
     public void setStory(){
         setBackground(backgrounds[clickIndex]);
         getBackground().drawImage(stories[clickIndex], 125, 550);
