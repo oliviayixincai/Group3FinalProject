@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=Game_Intro_World
-comment0.text=\n\ Write\ a\ description\ of\ class\ Game_Intro_World\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Introduction\ world\ to\ the\ flip\ card\ memory\ game,\ tell\ the\ player\ to\ click\ and\ start\ the\ game\n\ \n\ @Yuxin\ Li\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=mainWorld
 comment1.target=Game_Intro_World(MainWorld)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Game_Intro_World.\ Add\ a\ click\ to\ start\ flashtext.\n\ If\ the\ world\ or\ the\ text\ is\ clicked,\ start\ the\ game.\n\ \n\ @param\ mainWorld\ the\ main\ player\ world\ that\ the\ player\ will\ go\ back\ to\ after\ the\ game\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

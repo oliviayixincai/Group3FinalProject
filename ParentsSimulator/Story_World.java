@@ -69,6 +69,7 @@ public class Story_World extends World
     }
     /**
      * set the page number 
+     * @param num the page number
      */
     public void setClickIndex(int num){
         clickIndex=num;

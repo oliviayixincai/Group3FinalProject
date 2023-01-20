@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Write a description of class MyWorld here.
+ * Memory game world is the world for the flip card game, it allows player to click 2 cards at the same time and check if the cards have the 
+ * picture. If the 2 cards have different pictures, the cards will be flipped back. If the 2 cards have same pictures, the cards will 
+ * be removed. The player's goal is to remove all pairs. 
  * 
- * @author (your name) 
+ * @Yuxin Li (your name) 
  * @version (a version number or a date)
- * https://www.pinterest.ca/pin/587367976379616134/
+ * Animal pictures: https://www.pinterest.ca/pin/587367976379616134/
  * 
  * "https://www.freepik.com/free-vector/peach-background-vector-cute-desktop-wallpaper_18247639.htm#query=desktop%20wallpaper&position=1&from_view=keyword">Image by rawpixel.com</a> on Freepik
  */
@@ -29,8 +31,10 @@ public class Memory_Game_World extends World
     private int points;
     private MainWorld main;
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for the memory game. Add and shuffle the cards when the world is initialized. 
+     * Start the count down timer and the point displayer
      * 
+     * @param mainWorld the main player world that the player will go back to after the game
      */
     public Memory_Game_World(MainWorld mainWorld)
     {    
@@ -52,7 +56,9 @@ public class Memory_Game_World extends World
             all_cards.add("sheep");
             all_cards.add("giraffe");
         }
+        // shuffle the cards
         Collections.shuffle(all_cards);
+        //add the cards to the 2D array and calculate the position
         cards=new Card[4][6];
         int index=0;
         for(int i=0; i<cards.length; i++){
@@ -70,10 +76,12 @@ public class Memory_Game_World extends World
     }
     
     public void act(){
+        //first and second card are static variables stored in Card class
         first_card=Card.getFirst();
         second_card=Card.getSecond();
         if(first_card!=null&&second_card!=null){
             if((first_card.getName()).equals(second_card.getName())){
+                //remove the cards and reset the first flip and second flip
                 countDown();
                 if(waittime==0){
                     removeObject(first_card);
@@ -88,6 +96,7 @@ public class Memory_Game_World extends World
                 }
             }
             else{
+                //flip cards back after half a sec
                 countDown();
                 if(waittime==0){
                     first_card.flipBack();
@@ -102,11 +111,14 @@ public class Memory_Game_World extends World
             }
             
         }
-        if(90-getTimeInSeconds()>0){
+        //update the timer
+        if(60-getTimeInSeconds()>0){
             endTime=System.nanoTime();
             timeDisplay.setDisplayer(60-getTimeInSeconds());
         }
+        //update the points
         pointDisplay.setDisplayer(points);
+        //go to the result world if the player gets all pair or time runs ou
         if(points==12&&getTimeInSeconds()<60){
             Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main));
         }
@@ -114,17 +126,28 @@ public class Memory_Game_World extends World
             Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main));
         }
     }
+    /**
+     * start count down if the wait time is above 0
+     */
     public void countDown(){
         if(waittime>0){
             waittime--;
         }
     }
+    /**
+     * check if all cards are removed
+     * @return boolean true if there are no cards remain in world, false if there are still cards in world 
+     */
     public boolean finished(){
         if(getObjects(Card.class).size()==0){
             return true;
         }
         return false;
     }
+    /**
+     * calculate the time passed in seconds
+     * @return int the time in seconds
+     */
     public int getTimeInSeconds ()
     {
         return (int)((double)(endTime - startTime) / 1000000000.0);
