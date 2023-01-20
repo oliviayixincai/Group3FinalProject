@@ -14,6 +14,7 @@ public class Game_Result_World extends World
     private boolean on_time;
     private Color transparent = new Color(0,0,0,0);
     private MainWorld main;
+    private int waitTime=60;
     /**
      * Show the player the results of the flip card game
      * @param points points earned by player
@@ -45,7 +46,8 @@ public class Game_Result_World extends World
     }
     public void act() {
         //go back to the main world and set the stats
-        if (Greenfoot.mouseClicked(this)) {
+        waitTime--;
+        if (Greenfoot.mouseClicked(this)&&waitTime<=0) {
             Stats_Board stats=main.returnStats();
             stats.addPoints("Memory", result_points/2);
             stats.addPoints("Creativity", result_points-result_points/2);
