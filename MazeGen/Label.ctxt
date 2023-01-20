@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Label
+comment0.text=\n\ Write\ a\ description\ of\ class\ Label\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Label()
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ show\ initial\ value\ when\ label\ added\ to\ world\n
+comment3.params=newValue
+comment3.target=void\ setDisplay(int)
+comment3.text=\n\ set\ new\ value\ of\ displayer\ and\ update\ appearance\n
+comment4.params=
+comment4.target=int\ getValue()
+comment4.text=\ \n\ return\ current\ value\ of\ label\n
+comment5.params=
+comment5.target=void\ updateImage()
+comment6.params=
+comment6.target=void\ act()
+comment6.text=\n\ Act\ -\ do\ whatever\ the\ Label\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=7
