@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Game_Result_World extends World
 {
-
     
     private int result_points;
     private int total_time;
@@ -17,7 +16,9 @@ public class Game_Result_World extends World
     private MainWorld main;
     /**
      * Show the player the results of the flip card game
-     * @param points 
+     * @param points points earned by player
+     * @param time_taken time used in the game
+     * @param success whether the player remove all cards or not
      * @param mainWorld the main player world that the player will go back to after the game
      */
     public Game_Result_World(int points, int time_taken, boolean success, MainWorld mainWorld)
@@ -43,6 +44,7 @@ public class Game_Result_World extends World
         }
     }
     public void act() {
+        //go back to the main world and set the stats
         if (Greenfoot.mouseClicked(this)) {
             Stats_Board stats=main.returnStats();
             stats.addPoints("Memory", result_points/2);
