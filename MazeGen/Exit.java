@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Exit extends Piece
 {
-    public Exit() {
+    private Chessboard w;
+    private MainWorld mainWorld;
+    
+    public Exit(MainWorld main) {
         /*
         GreenfootImage i = new GreenfootImage(50, 50);
         i.setColor(Color.GREEN);
@@ -16,6 +19,11 @@ public class Exit extends Piece
         */
         GreenfootImage i = new GreenfootImage("bKing.png");
         setImage(i);
+        mainWorld = main;
+    }
+    
+    public void addedToWorld(World w){
+        this.w = (Chessboard)w;
     }
     
     /**
@@ -24,10 +32,8 @@ public class Exit extends Piece
      */
     public void act()
     {
-        if(isTouching(Player.class)) {
-            WinScreen newW = new WinScreen();
-            //Greenfoot.removeWorld();
-            Greenfoot.setWorld(newW);
+        if (getOneIntersectingObject(Player.class) != null && getOneIntersectingObject(Exit.class) != null) {
+            Greenfoot.setWorld(new WinScreen(w.getPoints(), w.getTimeInSeconds(), true, mainWorld));
         }
     }
 }

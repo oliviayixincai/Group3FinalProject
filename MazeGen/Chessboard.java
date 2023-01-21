@@ -19,8 +19,9 @@ public class Chessboard extends World {
     private int points;
     private Timer timer;
     private Score score;
+    private MainWorld main;
     
-    public Chessboard() {
+    public Chessboard(MainWorld mainWorld) {
         super(1000, 700, 1);
         //GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
         //bg.setColor(new Color(130, 89, 17));
@@ -28,6 +29,7 @@ public class Chessboard extends World {
         setBackground("wood.png");
         // bg from https://www.vecteezy.com/free-vector/cartoon-wood (edited)
         
+        main = mainWorld;
         squareSize = 75;
         
         xOffset = 375;
@@ -51,19 +53,19 @@ public class Chessboard extends World {
     }
     
     public void act() {
-        checkPoints();
+        points = checkPoints();
         score.setDisplay(points);
         if(60-getTimeInSeconds()>0){
             endTimer();
             timer.setDisplay(60-getTimeInSeconds());
         }
-        if(60 -getTimeInSeconds()==0) {
-            Greenfoot.setWorld(new WinScreen());
+        if(getTimeInSeconds()>=60) {
+            Greenfoot.setWorld(new WinScreen(points, getTimeInSeconds(), false, main));
         }
     }
     
-    public void checkPoints() {
-        points = (60 - getTimeInSeconds()) /5 *2;
+    public int checkPoints() {
+        return (60 - getTimeInSeconds()) /5 *2;
     }
     
     public void setBoard() {
@@ -141,7 +143,7 @@ public class Chessboard extends World {
             addPieces(i+1,6);
         }
         //chess[0][0] = new Player();
-        chess[7][7] = new Exit();
+        chess[7][7] = new Exit(main);
         
         //System.out.println("pieces length = " + pieces.size());
         Collections.shuffle(images);
@@ -149,6 +151,14 @@ public class Chessboard extends World {
             pieces.get(i).setImage(images.get(i % images.size()));
             //pieces.get(i).setImage(images.get(i));
         }
+    }
+    
+    public void buildMaze2() {
+        
+    }
+    
+    public void buildMaze3() {
+        
     }
     
     public void addPieces(int row, int col) {
@@ -183,6 +193,10 @@ public class Chessboard extends World {
     
     public int getyOffset() {
         return yOffset;
+    }
+
+    public int getPoints() {
+        return points;
     }
     
     // mr cohen's timer class

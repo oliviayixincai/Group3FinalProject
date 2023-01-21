@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Label extends Actor
 {
     protected int value;
-    protected static final Color transparent = new Color(0,0,0,0);
+    protected static final Color transparent = new Color(0 , 0, 0, 0);
     protected Color border;
     
     public Label() {
