@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Score extends Label
+public class Score extends LabelAbstract
 {
     public Score(int value) {
         this.value = value;

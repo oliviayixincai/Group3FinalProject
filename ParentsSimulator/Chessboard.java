@@ -54,10 +54,10 @@ public class Chessboard extends World {
     
     public void act() {
         points = checkPoints();
-        score.setDisplay(points);
+        score.setDisplayer(points);
         if(60-getTimeInSeconds()>0){
             endTimer();
-            timer.setDisplay(60-getTimeInSeconds());
+            timer.setDisplayer(60-getTimeInSeconds());
         }
         if(getTimeInSeconds()>=60) {
             Greenfoot.setWorld(new WinScreen(points, getTimeInSeconds(), false, main));

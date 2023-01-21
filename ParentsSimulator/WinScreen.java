@@ -10,7 +10,7 @@ public class WinScreen extends Screens
 {
     private int points, timeTaken;
     private boolean won;
-    private mainWorld mainWorld;
+    private MainWorld mainWorld;
     
     /**
      * Constructor for objects of class WinScreen.
