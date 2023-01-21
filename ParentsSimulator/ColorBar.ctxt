@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=ColorBar
-comment0.text=\n\ Write\ a\ description\ of\ class\ ColorBar\ here.\n\ \n\ @author\ Gloria\ Chan\n\ @version\ \!\!\ DATE\ \!\!\n
-comment1.params=size\ colour\ num
-comment1.target=ColorBar(int,\ greenfoot.Color,\ int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3

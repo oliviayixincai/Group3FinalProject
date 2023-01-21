@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ListGrid extends Actor
 {
     public ListGrid(int num) {
-        GreenfootImage grid = new GreenfootImage(130, 90*num + 10);
+        GreenfootImage grid = new GreenfootImage(130, 90 * num + 10);
         grid.setColor(Color.BLACK);
         for (int i = 0; i <= num; i++) {
             grid.drawLine(0, i * 90, 120, i * 90);

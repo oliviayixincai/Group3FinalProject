@@ -11,12 +11,13 @@ public abstract class LabelAbstract extends Actor
     
     protected int value;
     protected static final Color transparent = new Color(0,0,0,0);
+    protected Color border;
     /**
      * Store the initial value of the label 
      * @param value Initial value of the label
      */
     public LabelAbstract(){
-        
+        border = new Color(251, 239, 229);
     }
     
     /**
@@ -40,7 +41,7 @@ public abstract class LabelAbstract extends Actor
     /**
      * return the current value of label
      */
-    public int getValue(){
+    public int getValue() {
         return value;
     }
     

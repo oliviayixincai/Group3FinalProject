@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Game_Result_World
-comment0.text=\n\ Write\ a\ description\ of\ class\ Game_Result_World\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=points\ time_taken\ success\ mainWorld
-comment1.target=Game_Result_World(int,\ int,\ boolean,\ MainWorld)
-comment2.params=
-comment2.target=void\ act()
-numComments=3
