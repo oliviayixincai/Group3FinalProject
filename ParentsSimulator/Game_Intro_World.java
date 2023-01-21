@@ -1,23 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Game_Intro_World here.
+ * Introduction world to the flip card memory game, tell the player to click and start the game
  * 
- * @author (your name) 
+ * @Yuxin Li (your name) 
  * @version (a version number or a date)
  */
 public class Game_Intro_World extends World
 {
 
-    /**
-     * Constructor for objects of class Game_Intro_World.
-     * 
-     */
+    
     private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
     private GreenfootImage welcomeText;
     private Flashing_Text flashText;
     private GreenfootImage clickImage;
     private MainWorld main; 
+    /**
+     * Constructor for objects of class Game_Intro_World. Add a click to start flashtext.
+     * If the world or the text is clicked, start the game.
+     * 
+     * @param mainWorld the main player world that the player will go back to after the game
+     */
     public Game_Intro_World(MainWorld mainWorld)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -32,7 +35,7 @@ public class Game_Intro_World extends World
         
     }
     public void act(){
-        if(Greenfoot.mouseClicked(this)){
+        if(Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(flashText)){
             Greenfoot.setWorld(new Memory_Game_World(main));
         }
     }
