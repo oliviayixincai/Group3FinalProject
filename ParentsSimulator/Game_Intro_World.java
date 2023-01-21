@@ -10,7 +10,7 @@ public class Game_Intro_World extends World
 {
 
     
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
+    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
     private GreenfootImage welcomeText;
     private Flashing_Text flashText;
     private GreenfootImage clickImage;

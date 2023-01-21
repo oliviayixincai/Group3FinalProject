@@ -15,7 +15,7 @@ import java.util.Collections;
  */
 public class Memory_Game_World extends World
 {
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
+    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
