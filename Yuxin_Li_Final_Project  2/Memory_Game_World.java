@@ -3,19 +3,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Memory game world is the world for the flip card game, it allows player to click 2 cards at the same time and check if the cards have the 
- * picture. If the 2 cards have different pictures, the cards will be flipped back. If the 2 cards have same pictures, the cards will 
- * be removed. The player's goal is to remove all pairs. 
+ * A flip card memory game that remove two cards that has the same picture.
+ * Player can flip two cards one time. If the cards have different pictures, 
+ * the cards will flip back. The goal is to remove all cards within one minute.
+ * The game will end after one minute regardless how many pairs the player 
+ * remove.
  * 
- * @Yuxin Li (your name) 
+ * @Yuxin Li(your name) 
  * @version (a version number or a date)
- * Animal pictures: https://www.pinterest.ca/pin/587367976379616134/
- * 
- * "https://www.freepik.com/free-vector/peach-background-vector-cute-desktop-wallpaper_18247639.htm#query=desktop%20wallpaper&position=1&from_view=keyword">Image by rawpixel.com</a> on Freepik
+ * https://www.pinterest.ca/pin/587367976379616134/
  */
 public class Memory_Game_World extends World
 {
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
+    
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
@@ -29,19 +29,15 @@ public class Memory_Game_World extends World
     private long startTime;
     private long endTime;
     private int points;
-    private MainWorld main;
     /**
-     * Constructor for the memory game. Add and shuffle the cards when the world is initialized. 
-     * Start the count down timer and the point displayer
+     * Constructor of memory game; add the cards and shuffle
+     * add the time and point displayers
      * 
-     * @param mainWorld the main player world that the player will go back to after the game
      */
-    public Memory_Game_World(MainWorld mainWorld)
+    public Memory_Game_World()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1); 
-        main=mainWorld;
-        setBackground(background);
         for(int i=0; i<2; i++){
             all_cards.add("bunny");
             all_cards.add("cheetah");
@@ -56,9 +52,7 @@ public class Memory_Game_World extends World
             all_cards.add("sheep");
             all_cards.add("giraffe");
         }
-        // shuffle the cards
         Collections.shuffle(all_cards);
-        //add the cards to the 2D array and calculate the position
         cards=new Card[4][6];
         int index=0;
         for(int i=0; i<cards.length; i++){
@@ -76,12 +70,10 @@ public class Memory_Game_World extends World
     }
     
     public void act(){
-        //first and second card are static variables stored in Card class
         first_card=Card.getFirst();
         second_card=Card.getSecond();
         if(first_card!=null&&second_card!=null){
             if((first_card.getName()).equals(second_card.getName())){
-                //remove the cards and reset the first flip and second flip
                 countDown();
                 if(waittime==0){
                     removeObject(first_card);
@@ -96,7 +88,6 @@ public class Memory_Game_World extends World
                 }
             }
             else{
-                //flip cards back after half a sec
                 countDown();
                 if(waittime==0){
                     first_card.flipBack();
@@ -111,23 +102,27 @@ public class Memory_Game_World extends World
             }
             
         }
-        //update the timer
+        // update the time left to play the game
         if(60-getTimeInSeconds()>0){
             endTime=System.nanoTime();
             timeDisplay.setDisplayer(60-getTimeInSeconds());
         }
-        //update the points
+        
         pointDisplay.setDisplayer(points);
-        //go to the result world if the player gets all pair or time runs ou
+        
+        //if all pairs are removed, go to the result world
         if(points==12&&getTimeInSeconds()<60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true));
         }
+        
+        //if 60 seconds passed, exit game world and go to result world
         if(getTimeInSeconds()==60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false));
         }
     }
     /**
-     * start count down if the wait time is above 0
+     *  if two cards do not match, start countdown
+     *  wait half a second for the cards to flip back
      */
     public void countDown(){
         if(waittime>0){
@@ -135,8 +130,8 @@ public class Memory_Game_World extends World
         }
     }
     /**
-     * check if all cards are removed
-     * @return boolean true if there are no cards remain in world, false if there are still cards in world 
+     * check if there are any cards left on the screen
+     * @return boolean true if there is no cards, false if there are cards left
      */
     public boolean finished(){
         if(getObjects(Card.class).size()==0){
@@ -145,8 +140,8 @@ public class Memory_Game_World extends World
         return false;
     }
     /**
-     * calculate the time passed in seconds
-     * @return int the time in seconds
+     * calculate the time passed
+     * @return int the time passed 
      */
     public int getTimeInSeconds ()
     {
