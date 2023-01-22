@@ -1,60 +1,83 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yixin Cai
+ * @version 2023-01-21
  */
 public class MainWorld extends World
 {
-    //private Stats stats = new Stats();
-    
+    private int stage;
+    private Label stageLabel;
+    private int tik;
     private Button scheduleButton;
-    
-    private int round;
-    private Label roundLabel;
-    
-    // TODO: temp for testing
-    
     private Button playPixelArtButton;
     private Button playMemoryButton;
-    private Button playMazeButton;
+    private Button playChessButton;
     
-    private Stats_Board the_Stats;
+    private Map<String, Stat> statMap;
 
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MainWorld()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public MainWorld() {
         super(1000, 700, 1); 
         
-        GreenfootImage background = new GreenfootImage("room.png");
-        setBackground(background);
-        
-        this.scheduleButton = new Button("scheduleButton.png");
+        this.scheduleButton = new Button("buttonSchedule.png");
         addObject(scheduleButton, 800, 600);
         
-        this.round = 0;
-        this.roundLabel = new Label(this.round);
-        addObject(roundLabel, 500, 350);
+        this.stage = 0;
+        this.stageLabel = new Label("");
+        addObject(stageLabel, 500, 20);
+        updateStageLabel();
+        this.tik = 0;
         
+        this.playPixelArtButton = new Button("buttonPixelGame.png");
+        addObject(playPixelArtButton, 193, 211);
+        this.playMemoryButton = new Button("buttonMemoryGame.png");
+        addObject(playMemoryButton, 130, 212);
+        this.playChessButton = new Button("buttonChessGame.png");
+        addObject(playChessButton, 167, 110);
         
-        this.playPixelArtButton = new Button("playPixelArt.png");
-        addObject(playPixelArtButton, 100, 100);
-        this.playMemoryButton = new Button("playMemory.png");
-        addObject(playMemoryButton, 200, 100);
-        this.playMazeButton = new Button("playMaze.png");
-        addObject(playMazeButton, 300, 100);
+        Stat iqStat = new Stat(0);
+        Stat eqStat = new Stat(0);
+        Stat memoryStat = new Stat(0);
+        Stat creativityStat = new Stat(0);
+        addObject(iqStat, 240, 360);
+        addObject(eqStat, 240, 440);
+        addObject(memoryStat, 240, 520);
+        addObject(creativityStat, 240, 600);
         
-        the_Stats=new Stats_Board();
-        addObject(the_Stats, 180, 400);
+        this.statMap = new HashMap<String, Stat>();
+        this.statMap.put("IQ", iqStat);
+        this.statMap.put("EQ", eqStat);
+        this.statMap.put("Memory", memoryStat);
+        this.statMap.put("Creativity", creativityStat);
+        
+        setBackground();
     }
     
     public void act() {
+        // Game about to finish
+        if (this.stage > 2) {
+            removeObject(this.scheduleButton);
+            this.tik++;
+            if (this.tik > 150) {
+                int[] stats = {
+                    this.statMap.get("IQ").getValue(),
+                    this.statMap.get("EQ").getValue(),
+                    this.statMap.get("Memory").getValue(),
+                    this.statMap.get("Creativity").getValue()
+                };
+                End_World ew = new End_World(stats);
+                Greenfoot.setWorld(ew);
+            }
+            return;
+        }
+        
         if (Greenfoot.mouseClicked(this.scheduleButton)) {
             ScheduleWorld sw = new ScheduleWorld(this);
             Greenfoot.setWorld(sw);
@@ -67,19 +90,57 @@ public class MainWorld extends World
             Game_Intro_World giw = new Game_Intro_World(this);
             Greenfoot.setWorld(giw);
         }
-        else if (Greenfoot.mouseClicked(this.playMazeButton)) {
+        else if (Greenfoot.mouseClicked(this.playChessButton)) {
             Chessboard cb = new Chessboard(this);
             Greenfoot.setWorld(cb);
         }
     }
     
-    public int getRound() {
-        return this.round;
+    public int getStage() {
+        return this.stage;
+    }
+
+    public void nextStage() {
+        this.stage++;
+        updateStageLabel();
+        setBackground();
     }
     
-    public Stats_Board returnStats(){
-        return the_Stats;
+    public void addPoint(String name, int point) {
+        this.statMap.get(name).addPoint(point);
     }
     
+    public String getStageText() {
+        String text = "Stage: ";
+        switch(this.stage) {
+            case 0:
+                return text + "1-6 Years Old";
+            case 1:
+                return text + "7-12 Years Old";
+            case 2:
+                return text + "13-18 Years Old";
+            default:
+                return text + "Adult";
+        }
+    }
     
+    private void updateStageLabel() {
+        this.stageLabel.updateLabel(getStageText());
+    }
+    
+    private void setBackground() {
+        String fileName;
+        if (this.stage == 0) {
+            fileName = "backgroundBaby.png";
+        }
+        else if (this.stage == 1) {
+            fileName = "backgroundChild.png";
+        }
+        else {
+            fileName = "backgroundTeen.png";
+        }
+        GreenfootImage background = new GreenfootImage(fileName);
+        setBackground(background);
+    }
+
 }

@@ -13,7 +13,7 @@ public class Game_Result_World extends World
     private int total_time;
     private boolean on_time;
     private Color transparent = new Color(0,0,0,0);
-    private MainWorld main;
+    private MainWorld mainWorld;
     /**
      * Show the player the results of the flip card game
      * @param points points earned by player
@@ -25,7 +25,7 @@ public class Game_Result_World extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 700, 1); 
-        main=mainWorld;
+        this.mainWorld=mainWorld;
         result_points=points;
         total_time=time_taken;
         on_time=success;
@@ -46,11 +46,9 @@ public class Game_Result_World extends World
     public void act() {
         //go back to the main world and set the stats
         if (Greenfoot.mouseClicked(this)) {
-            Stats_Board stats=main.returnStats();
-            stats.addPoints("Memory", result_points/2);
-            stats.addPoints("Creativity", result_points-result_points/2);
-            Greenfoot.setWorld(main);
-            
+            this.mainWorld.addPoint("Memory", result_points/2);
+            this.mainWorld.addPoint("Creativity", result_points-result_points/2);
+            Greenfoot.setWorld(mainWorld);
         }
     }
 }

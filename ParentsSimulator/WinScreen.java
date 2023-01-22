@@ -41,9 +41,8 @@ public class WinScreen extends Screens
     
     public void act() {
         if(Greenfoot.mouseClicked(this)) {
-            Stats_Board stats = mainWorld.returnStats();
-            stats.addPoints("IQ", points/2);
-            stats.addPoints("Creativity", points/2);
+            this.mainWorld.addPoint("IQ", points/2);
+            this.mainWorld.addPoint("Creativity", points/2);
             Greenfoot.setWorld(mainWorld);
         }
     }
