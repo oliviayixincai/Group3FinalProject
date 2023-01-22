@@ -9,15 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * get married picture by RapidEye
  * https://www.istockphoto.com/photo/male-and-female-hands-clasped-gm931136214-255235764
+ * https://hackspirit.com/differences-between-falling-in-love-and-flowing-in-love/
  * 
  * pregnant picture
  * https://www.madeformums.com/pregnancy/early-pregnancy-tests-are-giving-too-many-false-results/
+ * https://www.thehealthy.com/pregnancy/positive-pregnancy-test/
  * 
  * hospital picture
  * https://unsplash.com/s/photos/hospital-room
+ * https://wexnermedical.osu.edu/blog/patients-value-control-privacy-in-hospital-rooms
+ * 
+ * baby pic
+ * https://www.peakpx.com/en/hd-wallpaper-desktop-alevu
  * 
  * welcome picture by dpproductions
  * https://www.istockphoto.com/photos/front-door
+ * https://abeautifulmess.com/first-things-first-a-pink-front-door/
  * 
  * story block by user2104819
  * https://www.freepik.com/premium-vector/set-ui-elements-2d-games-apps-jungle-game-ui-part-2_4267333.htm
@@ -40,9 +47,9 @@ public class Story_World extends World
     public Story_World()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1024, 700, 1); 
+        super(1000, 700, 1); 
         for(int i=1; i<=5; i++){
-            backgrounds[i-1]=new GreenfootImage("background"+i+".png");
+            backgrounds[i-1]=new GreenfootImage("backgroundAlt"+i+".png");
             stories[i-1]=new GreenfootImage("page"+i+".png");
         }
         clickIndex=0;
