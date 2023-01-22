@@ -14,6 +14,8 @@ public class Backward extends Arrow
      */
     
     public Backward(Story_World sw){
+        GreenfootImage backwardArrow = new GreenfootImage("backward.png");
+        setImage(backwardArrow);
         storyWorld=sw;
     }
     public void act()

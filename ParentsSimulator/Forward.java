@@ -13,6 +13,8 @@ public class Forward extends Arrow
      */
     
     public Forward(Story_World sw){
+        GreenfootImage forwardArrow = new GreenfootImage("forward.png");
+        setImage(forwardArrow);
         storyWorld=sw;
     }
     public void act()

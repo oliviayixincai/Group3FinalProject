@@ -7,10 +7,19 @@ import java.util.ArrayList;
  * @author Gloria Chan
  * @version !! DATE !!
  */
-public class PixelArt extends World
+public class PixelArtWorld extends World
 {
-    private int type;
-    private GreenfootImage background = new GreenfootImage("pixelArt.png");
+    // Sets up timer and time tracking
+    private int maxTime = 60;
+    private int actTimes;
+    private int secondsElapsed;
+    private int points;
+    private TimeDisplayer timer = new TimeDisplayer(maxTime);
+    private PointDisplayer pointDisplay = new PointDisplayer(0);
+    
+    private int type = Greenfoot.getRandomNumber(2);
+    private GreenfootImage background = new GreenfootImage("pixelArtBG.png");
+    private MainWorld main;
     
     // Pixel art colours (RGB values)
     private static Color lightBlue = new Color(199, 249, 255); //c7f9ff
@@ -86,17 +95,21 @@ public class PixelArt extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public PixelArt()
+    public PixelArtWorld(MainWorld mainWorld)
     {    
         // Create a world with 1000x700 cells with a cell size of 1x1 pixels.
-        super(1000, 700, 1); 
+        super(1000, 700, 1);
+        main = mainWorld;
+        addObject(timer, 215, 40);
         
+        actTimes = 0;
+        secondsElapsed = 0;
+        points = 0;
         setBackground(background);
         
         finished = false;
         // Integer that randomizes the minigame's art.
         // 0 = Cow; 1 = Cat
-        type = Greenfoot.getRandomNumber(2);
         if (type == 0)
         {
             // Draws out a cow.
@@ -120,12 +133,40 @@ public class PixelArt extends World
     public void act()
     {
         changeColours();
+        
+        // Counts down timer in seconds.
+        if (actTimes % 60 == 0)
+        {
+            secondsElapsed++;
+            timer.setDisplayer(maxTime - secondsElapsed);
+        }
+        
         finished = returnCompletion();
         if (finished)
         {
-            //Add congratulations
-            System.out.println("Congratsssss!");
+            if (secondsElapsed <= 35) // Less than or equal to 60 s to complete = 
+            {
+                points = 12;
+                Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
+            }
+            else if (secondsElapsed >= 36 && secondsElapsed <= 45)
+            {
+                points = 6;
+                Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
+            }
+            else
+            {
+                points = 2;
+                Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
+            }
         }
+        
+        if (!finished && secondsElapsed == maxTime)
+        {
+            points = 0;
+            Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, false, main, "EQ", "Creativity"));
+        }
+        actTimes++;
     }
     
     // Makes a numbered grid (2D array) with numbers that the player must fill in.
@@ -133,7 +174,7 @@ public class PixelArt extends World
     private void makeGrid(int length, int height)
     {
         int p = length / 15; // Dimensions of each cell in the grid.
-        int x = 418; // Amount of room left for colour box.
+        int x = 417; // Amount of room left for colour box.
         int y = (700 - length)/2; // Makes sure that the grid is in the centre of the World.
         
         GreenfootImage c = new GreenfootImage (2, height);
