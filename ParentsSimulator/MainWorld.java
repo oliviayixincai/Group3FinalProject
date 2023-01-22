@@ -68,7 +68,7 @@ public class MainWorld extends World
             Greenfoot.setWorld(giw);
         }
         else if (Greenfoot.mouseClicked(this.playMazeButton)) {
-            Chessboard cb = new Chessboard(this);
+            OpeningScreen cb = new OpeningScreen(this);
             Greenfoot.setWorld(cb);
         }
     }

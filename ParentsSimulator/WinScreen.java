@@ -18,7 +18,6 @@ public class WinScreen extends Screens
      */
     public WinScreen(int points, int timeTaken, boolean won, MainWorld mainWorld) {    
         super();
-        setBackground("wood.png");
         getBackground().drawImage(new GreenfootImage("yay.png"), 250, 175);
         // image from https://learningworksforkids.com/vector-illustration-of-retro-pastel-color-smile-pink-brain-with-2/
         
