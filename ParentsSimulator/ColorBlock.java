@@ -50,7 +50,7 @@ public class ColorBlock extends PixelArtTools
         if (Greenfoot.isKeyDown("space") && Greenfoot.mouseMoved(this) && colourable)
         {
             // Checks which colour the user selected to colour with.
-            PixelArt w = (PixelArt) getWorld();
+            PixelArtWorld w = (PixelArtWorld) getWorld();
             Color selColour = w.returnColour();
             
             // If the wrong colour is used to paint the pixel block,

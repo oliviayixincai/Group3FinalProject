@@ -120,10 +120,10 @@ public class Memory_Game_World extends World
         pointDisplay.setDisplayer(points);
         //go to the result world if the player gets all pair or time runs ou
         if(points==12&&getTimeInSeconds()<60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main, "Memory", "Creativity"));
         }
         if(getTimeInSeconds()==60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main, "Memory", "Creativity"));
         }
     }
     /**

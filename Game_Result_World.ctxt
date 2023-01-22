@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Game_Result_World
-comment0.text=\n\ The\ result\ world\ shows\ player\ whether\ they\ are\ successful\ in\ finishing\ the\ game\ or\ not.\ Tells\ the\ player\ how\ many\ points\ they\ earn\n\ \n\ @Yuxin\ Li\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=points\ time_taken\ success\ mainWorld\ stat1\ stat2
-comment1.target=Game_Result_World(int,\ int,\ boolean,\ MainWorld,\ java.lang.String,\ java.lang.String)
-comment1.text=\n\ Show\ the\ player\ the\ results\ of\ the\ flip\ card\ game\n\ @param\ points\ points\ earned\ by\ player\n\ @param\ time_taken\ time\ used\ in\ the\ game\n\ @param\ success\ whether\ the\ player\ remove\ all\ cards\ or\ not\n\ @param\ mainWorld\ the\ main\ player\ world\ that\ the\ player\ will\ go\ back\ to\ after\ the\ game\n
-comment2.params=
-comment2.target=void\ act()
-numComments=3

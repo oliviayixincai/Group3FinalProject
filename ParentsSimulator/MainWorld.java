@@ -60,8 +60,8 @@ public class MainWorld extends World
             Greenfoot.setWorld(sw);
         }
         else if (Greenfoot.mouseClicked(this.playPixelArtButton)) {
-            PixelArt pr = new PixelArt();
-            Greenfoot.setWorld(pr);
+            PixelArtWorld prw = new PixelArtWorld(this);
+            Greenfoot.setWorld(prw);
         }
         else if (Greenfoot.mouseClicked(this.playMemoryButton)) {
             Game_Intro_World giw = new Game_Intro_World(this);
