@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Stats_Board here.
  * 
- * @Yuxin (your name) 
+ * @Yuxin Li(your name) 
  * @version (a version number or a date)
  */
 public class Stats_Board extends Actor
