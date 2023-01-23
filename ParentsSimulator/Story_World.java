@@ -54,9 +54,9 @@ public class Story_World extends World
         }
         clickIndex=0;
         setBackground(backgrounds[clickIndex]);
-        getBackground().drawImage(stories[clickIndex], 210, 530);
+        getBackground().drawImage(stories[clickIndex], 200, 530);
         forward=new Forward(this);
-        addObject(forward, 950, 610);
+        addObject(forward, 920, 610);
         backward=new Backward(this);
     }
     public void act(){
@@ -87,6 +87,6 @@ public class Story_World extends World
      */
     public void setStory(){
         setBackground(backgrounds[clickIndex]);
-        getBackground().drawImage(stories[clickIndex], 210, 530);
+        getBackground().drawImage(stories[clickIndex], 200, 530);
     }
 }

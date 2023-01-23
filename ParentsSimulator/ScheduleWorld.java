@@ -37,7 +37,7 @@ public class ScheduleWorld extends AbstractWorld
         
         addObject(new Label(this.mainWorld.getStageText()), 500, 20);
         
-        this.finishButton = new Button("scheduleButton.png");
+        this.finishButton = new Button("buttonSchedule.png");
         
         scheduleText = new GreenfootImage("scheduleText.png");
         flashText = new Flashing_Text(scheduleText);
@@ -57,7 +57,7 @@ public class ScheduleWorld extends AbstractWorld
         initSelection();
         
         if (canFinish() && finishButton.getWorld() == null) {
-            addObject(this.finishButton, 800, 600);
+            addObject(this.finishButton, 210, 620);
         }
     }
     
