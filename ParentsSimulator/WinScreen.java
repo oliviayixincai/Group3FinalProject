@@ -16,10 +16,9 @@ public class WinScreen extends Screens
      * Constructor for objects of class WinScreen.
      * 
      */
-    public WinScreen(int points, int timeTaken, boolean won, MainWorld mainWorld)
-    {    
+    public WinScreen(int points, int timeTaken, boolean won, MainWorld mainWorld) {    
         super();
-        setBackground("wood.png");
+        getBackground().drawImage(new GreenfootImage("yay.png"), 250, 175);
         // image from https://learningworksforkids.com/vector-illustration-of-retro-pastel-color-smile-pink-brain-with-2/
         
         this.points = points;
@@ -27,16 +26,16 @@ public class WinScreen extends Screens
         this.won = won;
         this.mainWorld = mainWorld;
         
-        GreenfootImage pDisplay = new GreenfootImage("You get " + points + " points!", 30, border, transparent);
+        GreenfootImage pDisplay = new GreenfootImage("You get " + points + " points", 50, border, transparent);
         
         if(won) {
-            GreenfootImage win = new GreenfootImage("Congratulations! You finished the game in " + timeTaken + "seconds!", 30, border, transparent);
-            getBackground().drawImage(win, 100, 100);
+            GreenfootImage win = new GreenfootImage("Congratulations! \nYou finished the game in " + timeTaken + " seconds!", 50, border, transparent);
+            getBackground().drawImage(win, 100, 50);
         } else {
-            GreenfootImage lose = new GreenfootImage("Oops! Time is up!", 30, border, transparent);
-            getBackground().drawImage(lose, 100, 100);
+            GreenfootImage lose = new GreenfootImage("Oops! Time is up!", 50, border, transparent);
+            getBackground().drawImage(lose, 315, 75);
         }
-        getBackground().drawImage(pDisplay, 0, 0);
+        getBackground().drawImage(pDisplay, 320, 575);
     }
     
     public void act() {
