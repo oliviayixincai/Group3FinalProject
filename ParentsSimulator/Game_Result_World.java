@@ -16,6 +16,7 @@ public class Game_Result_World extends World
     private Color transparent = new Color(0,0,0,0);
     private GreenfootImage background = new GreenfootImage("confetti.png");
     private MainWorld mainWorld;
+    private int waitTime=60;
     /**
      * Show the player the results of the flip card game
      * @param points points earned by player
@@ -51,7 +52,8 @@ public class Game_Result_World extends World
     }
     public void act() {
         //go back to the main world and set the stats
-        if (Greenfoot.mouseClicked(this)) {
+        waitTime--;
+        if (Greenfoot.mouseClicked(this)&&waitTime<=0) {
             this.mainWorld.addPoint(statAffected1, result_points/2);
             this.mainWorld.addPoint(statAffected2, result_points-result_points/2);
             Greenfoot.setWorld(mainWorld);
