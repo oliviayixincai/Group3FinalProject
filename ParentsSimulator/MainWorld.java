@@ -36,11 +36,11 @@ public class MainWorld extends World
         this.tik = 0;
         
         this.playPixelArtButton = new Button("buttonPixelGame.png");
-        addObject(playPixelArtButton, 193, 211);
+        addObject(playPixelArtButton, 200, 200);
         this.playMemoryButton = new Button("buttonMemoryGame.png");
-        addObject(playMemoryButton, 130, 212);
+        addObject(playMemoryButton, 130, 195);
         this.playChessButton = new Button("buttonChessGame.png");
-        addObject(playChessButton, 167, 110);
+        addObject(playChessButton, 160, 95);
         
         Stat iqStat = new Stat(0);
         Stat eqStat = new Stat(0);
