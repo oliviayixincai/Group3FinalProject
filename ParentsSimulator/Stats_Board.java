@@ -18,6 +18,7 @@ public class Stats_Board extends Actor
     private Stat memory_stat;
     private Stat creativity_stat;
     private static final Color transparent = new Color(0,0,0,0);
+    
     public Stats_Board(){
         
     }
@@ -37,28 +38,32 @@ public class Stats_Board extends Actor
         GreenfootImage point_adding_text = new GreenfootImage("+ "+ points, 20, Color.BLACK, transparent);
         
         if(name.equals("IQ")){
-            getWorld().addObject(new Fades_Points(point_adding_text), iq_stat.getX()+60, iq_stat.getY()-10);
+            getWorld().addObject(new FadeEffect(point_adding_text), iq_stat.getX()+60, iq_stat.getY()-10);
             stats_values[0]+=points;
             iq_stat.setStat(stats_values[0]);
         }
         
         if(name.equals("EQ")){
-            getWorld().addObject(new Fades_Points(point_adding_text), eq_stat.getX()+60, eq_stat.getY()-10);
+            getWorld().addObject(new FadeEffect(point_adding_text), eq_stat.getX()+60, eq_stat.getY()-10);
             stats_values[1]+=points;
             eq_stat.setStat(stats_values[1]);
         }
         
         if(name.equals("Memory")){
-            getWorld().addObject(new Fades_Points(point_adding_text), memory_stat.getX()+95, memory_stat.getY()-10);
+            getWorld().addObject(new FadeEffect(point_adding_text), memory_stat.getX()+95, memory_stat.getY()-10);
             stats_values[2]+=points;
             memory_stat.setStat(stats_values[2]);
         }
         
         if(name.equals("Creativity")){
-            getWorld().addObject(new Fades_Points(point_adding_text), creativity_stat.getX()+105, creativity_stat.getY()-10);
+            getWorld().addObject(new FadeEffect(point_adding_text), creativity_stat.getX()+105, creativity_stat.getY()-10);
             stats_values[3]+=points;
             creativity_stat.setStat(stats_values[3]);
         }
     }
     
+    public int[] getStats() {
+        return this.stats_values;
+    }
+
 }

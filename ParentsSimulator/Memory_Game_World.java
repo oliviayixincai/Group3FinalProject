@@ -15,7 +15,7 @@ import java.util.Collections;
  */
 public class Memory_Game_World extends World
 {
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpg");
+    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
@@ -120,10 +120,10 @@ public class Memory_Game_World extends World
         pointDisplay.setDisplayer(points);
         //go to the result world if the player gets all pair or time runs ou
         if(points==12&&getTimeInSeconds()<60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), true, main, "Memory", "Creativity"));
         }
         if(getTimeInSeconds()==60){
-            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main));
+            Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main, "Memory", "Creativity"));
         }
     }
     /**

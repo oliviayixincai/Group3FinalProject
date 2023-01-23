@@ -32,7 +32,7 @@ public class Exit extends Piece
      */
     public void act()
     {
-        if (getOneIntersectingObject(Player.class) != null && getOneIntersectingObject(Exit.class) != null) {
+        if (isTouching(Player.class)) {
             Greenfoot.setWorld(new WinScreen(w.getPoints(), w.getTimeInSeconds(), true, mainWorld));
         }
     }

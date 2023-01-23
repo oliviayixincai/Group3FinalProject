@@ -38,7 +38,7 @@ public class Label extends Actor {
      * Constructors of Label
      */
     public Label(String labelText, int labelSize) {
-        this(labelText, labelSize, Color.BLACK);
+        this(labelText, labelSize, Color.GRAY);
     }
     
     /**

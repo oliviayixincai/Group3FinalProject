@@ -1,22 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Write a description of class Activity here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yixin Cai
+ * @version 2023-01-21
  */
 public class Activity extends Actor
 {
     public static final int SPEED = 20;
 
+    private String name;
     private int originalX;
     private int originalY;
     private boolean isMouseDown;
-    
-    public Activity() {
-        setImage(new GreenfootImage("activityExample.png"));
+    private int[] points;
+
+    public Activity(String name, int[] points) {
+        this.name = name;
+        this.points = points;
+        
+        String imageFileName = "activity" + this.name + "Icon.png";
+        setImage(new GreenfootImage(imageFileName));
     }
     
     public void addedToWorld(World w) {
@@ -73,4 +79,13 @@ public class Activity extends Actor
         this.originalX = x;
         this.originalY = y;
     }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public int[] getPoints() {
+        return this.points;
+    }
+    
 }

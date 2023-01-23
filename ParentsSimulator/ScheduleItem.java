@@ -1,8 +1,8 @@
 /**
  * Write a description of class ScheduleItem here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yixin Cai
+ * @version 2023-01-21
  */
 public class ScheduleItem  
 {
@@ -18,7 +18,7 @@ public class ScheduleItem
      * Constructor for objects of class ScheduleItem
      */
     public ScheduleItem(int x, int y) {
-        this(x, y, 120, 90);
+        this(x, y, ScheduleWorld.DEFAULT_ITEM_WIDTH, ScheduleWorld.DEFAULT_ITEM_HEIGHT);
     }
     
     public ScheduleItem(int x, int y, int width, int height) {
