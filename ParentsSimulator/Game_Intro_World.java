@@ -5,12 +5,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
+ * 
+ * backgroundImage by Siti Fatona
+ * <a href="https://www.vecteezy.com/free-vector/cute-background">Cute Background Vectors by Vecteezy</a>
  */
 public class Game_Intro_World extends World
 {
 
     
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
+    private GreenfootImage background = new GreenfootImage("memory_intro.jpg");
     private GreenfootImage welcomeText;
     private Flashing_Text flashText;
     private GreenfootImage clickImage;
