@@ -9,13 +9,14 @@ import java.util.Collections;
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
- * Animal pictures: https://www.pinterest.ca/pin/587367976379616134/
+ * Animal pictures by Naomi Lord
  * 
- * "https://www.freepik.com/free-vector/peach-background-vector-cute-desktop-wallpaper_18247639.htm#query=desktop%20wallpaper&position=1&from_view=keyword">Image by rawpixel.com</a> on Freepik
+ * card cover from:
+ * https://www.google.com/url?sa=i&url=http%3A%2F%2Frojgaraurnirman.in%2Fnotes.asp%3Fiid%3D85854742-cute%2Bbackground%2Bwallpaper%26cid%3D5&psig=AOvVaw2-48CrC9AafUW-Axk9iiiA&ust=1674583595198000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCNCeq5Sk3vwCFQAAAAAdAAAAABAM
  */
 public class Memory_Game_World extends World
 {
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
+    private GreenfootImage background = new GreenfootImage("memory_intro.jpg");
     private ArrayList<String> all_cards=new ArrayList<String>();
     private Card[][] cards;
     private int level;
@@ -45,15 +46,15 @@ public class Memory_Game_World extends World
         for(int i=0; i<2; i++){
             all_cards.add("bunny");
             all_cards.add("cheetah");
-            all_cards.add("elephant");
+            all_cards.add("duck");
             all_cards.add("fox");
-            all_cards.add("zebra");
+            all_cards.add("penguin");
             all_cards.add("bear");
-            all_cards.add("chicken");
+            all_cards.add("owl");
             all_cards.add("lion");
-            all_cards.add("monkey");
+            all_cards.add("bull");
             all_cards.add("panda");
-            all_cards.add("sheep");
+            all_cards.add("pig");
             all_cards.add("giraffe");
         }
         // shuffle the cards
