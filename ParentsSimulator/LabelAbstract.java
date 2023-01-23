@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Time_Label here.
  * 
- * @author (your name) 
+ * @Yuxin Li (your name) 
  * @version (a version number or a date)
  */
 public abstract class LabelAbstract extends Actor

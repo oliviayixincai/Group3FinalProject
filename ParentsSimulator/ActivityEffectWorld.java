@@ -67,7 +67,7 @@ public class ActivityEffectWorld extends AbstractWorld {
         
         GreenfootImage image = new GreenfootImage(this.background);
         image.drawImage(new GreenfootImage("randomChoicesQuestion.png"), 0, 0);
-        image.drawImage(new GreenfootImage(question, 50, Color.GRAY, new Color(0, 0, 0, 0)), 130, 130);
+        image.drawImage(new GreenfootImage(question, 30, Color.GRAY, new Color(0, 0, 0, 0)), 130, 130);
         
         setBackground(image);
         

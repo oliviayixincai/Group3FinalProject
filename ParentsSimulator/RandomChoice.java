@@ -9,6 +9,7 @@ import greenfoot.*;
 public class RandomChoice extends Actor {
     private String answer;
     private int[] results;
+    private GreenfootSound clickSound;
 
     /**
      * Constructor for objects of class RandomChoice
@@ -21,10 +22,13 @@ public class RandomChoice extends Actor {
         image.setColor(Color.GRAY);
         image.drawImage(new GreenfootImage(this.answer, 20, Color.GRAY, new Color(0, 0, 0, 0)), 30, image.getHeight() / 2 - 5);
         setImage(image);
+        
+        clickSound = new GreenfootSound("click.wav");
     }
     
     public void act() {
         if (Greenfoot.mouseClicked(this)) {
+            clickSound.play();
             ActivityEffectWorld w = (ActivityEffectWorld) getWorld();
             w.finishRandomChoice(this.results);
         }

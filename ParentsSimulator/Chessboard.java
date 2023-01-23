@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Write a description of class Chessboard here.
@@ -87,11 +88,33 @@ public class Chessboard extends World {
         }
         
         chess = new Piece[8][8];
-        buildMaze1();
+        images = new ArrayList<GreenfootImage>();
+        pieces = new ArrayList<Piece>();
+        addImages();
+        for(int row = 0; row < 8; row++) {
+            for(int col = 0; col < 8; col++) {
+                chess[row][col] = new Piece();
+            }
+        }
+        Random random = new Random();
+        int rand = random.nextInt(4);
+        if(rand == 0) {
+            buildMaze1();
+        } else if (rand == 1) {
+            buildMaze2();
+        } else if (rand == 2) {
+            buildMaze3();
+        } else if (rand == 3) {
+            buildMaze4();
+        }
         for(int row = 0; row < 8; row++) {
             for(int col = 0; col < 8; col++) {
                 addObject(chess[row][col], col*squareSize+xOffset, row*squareSize+yOffset);
             }
+        }
+        Collections.shuffle(images);
+        for (int i = 0; i < pieces.size(); i++) {
+            pieces.get(i).setImage(images.get(i % images.size()));
         }
     }
     
@@ -100,24 +123,7 @@ public class Chessboard extends World {
     }
     
     public void buildMaze1() {
-        /*
-        int random = Greenfoot.getRandomNumber(3);
-        if(random == 0) {
-        
-        for(int i = 0; i < 5; i++) {
-            chess[i][4] = new Wall();
-        }    
-        }
-        */
-        images = new ArrayList<GreenfootImage>();
-        pieces = new ArrayList<Piece>();
-        addImages();
-       
-        for(int row = 0; row < 8; row++) {
-            for(int col = 0; col < 8; col++) {
-                chess[row][col] = new Piece();
-            }
-        }
+        chess[7][7] = new Exit(main);
         for(int i = 0; i < 3; i++) {
             chess[2][i+3] = new Wall();
             addPieces(2,i+3);
@@ -142,23 +148,78 @@ public class Chessboard extends World {
             chess[i+1][6] = new Wall();
             addPieces(i+1,6);
         }
-        //chess[0][0] = new Player();
-        chess[7][7] = new Exit(main);
-        
-        //System.out.println("pieces length = " + pieces.size());
-        Collections.shuffle(images);
-        for (int i = 0; i < pieces.size(); i++) {
-            pieces.get(i).setImage(images.get(i % images.size()));
-            //pieces.get(i).setImage(images.get(i));
-        }
     }
     
     public void buildMaze2() {
-        
+        chess[7][4] = new Exit(main);
+        for(int i = 0; i < 3; i++) {
+            chess[6][i+4] = new Wall();
+            addPieces(6,i+4);
+        }
+        for(int i = 0; i < 2; i++) {
+            chess[i+6][3] = new Wall();
+            addPieces(i+6,3);
+            chess[i+5][1] = new Wall();
+            addPieces(i+5,1);
+        }
+        for(int i = 0; i < 7; i++) {
+            chess[4][i+1] = new Wall();
+            addPieces(4,i+1);
+            chess[2][i] = new Wall();
+            addPieces(2,i);
+        }
+        chess[1][6] = new Wall();
+        addPieces(1,6);
+        for(int i = 0; i < 4; i++) {
+            chess[0][i+1] = new Wall();
+            addPieces(0,i+1);
+        }
     }
     
     public void buildMaze3() {
-        
+        chess[7][0] = new Exit(main);
+        for(int i = 0; i < 6; i++) {
+            chess[i+1][0] = new Wall();
+            addPieces(i+1,0);
+            chess[6][i+1] = new Wall();
+            addPieces(6,i+1);
+            chess[1][i+1] = new Wall();
+            addPieces(1,i+1);
+            chess[3][i+2] = new Wall();
+            addPieces(3,i+2);
+        }
+        for(int i = 0; i < 5; i++) {
+            chess[3][i+3] = new Wall();
+            addPieces(3,i+3);
+        }
+        chess[4][2] = new Wall();
+        addPieces(4,2);
+        chess[4][6] = new Wall();
+        addPieces(4,6);
+        chess[5][4] = new Wall();
+        addPieces(5,4);
+    }
+    
+    public void buildMaze4() {
+        chess[4][7] = new Exit(main);
+        for(int i = 0; i < 8; i++) {
+            chess[i][1] = new Wall();
+            addPieces(i,1);
+            chess[i][3] = new Wall();
+            addPieces(i,3);
+        }
+        for(int i = 0; i < 3; i++) {
+            chess[1][i+4] = new Wall();
+            addPieces(1,i+4);
+            chess[3][i+5] = new Wall();
+            addPieces(3,i+5);
+            chess[i+4][5] = new Wall();
+            addPieces(i+4,5);
+            chess[i+5][7] = new Wall();
+            addPieces(i+5,7);
+        }
+        chess[6][1] = new Piece();
+        chess[0][3] = new Piece();
     }
     
     public void addPieces(int row, int col) {
@@ -303,5 +364,22 @@ public class Chessboard extends World {
     public float getTimeInMilliseconds ()
     {
         return (float)((double)(endTime - startTime) / 1000000.0);
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.chessSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.chessSound.pause();
     }
 }

@@ -21,8 +21,8 @@ public class OpeningScreen extends Screens
         GreenfootImage first = new GreenfootImage("Capture the king to win the game!", 60, border, transparent);
         GreenfootImage second = new GreenfootImage("Navigate using WASD or arrow keys \nto set your direction.", 50, border, transparent);
         GreenfootImage third = new GreenfootImage("Be careful not to fall off the board!", 50, border, transparent);
-        getBackground().drawImage(first, 60, 50);
-        getBackground().drawImage(second, 115, 150);
+        getBackground().drawImage(first, 60, 75);
+        getBackground().drawImage(second, 115, 175);
         getBackground().drawImage(third, 125, 450);
 
         //GreenfootImage king1 = GreenfootImage(new GreenfootImage("wKing.png").getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
