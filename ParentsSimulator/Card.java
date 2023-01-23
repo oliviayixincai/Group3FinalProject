@@ -20,11 +20,30 @@ public class Card extends Actor
     private static int upNumber;
     private static Card first=null;
     private static Card second=null;
+    
+    private static GreenfootSound[] sounds = {
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav"),
+        new GreenfootSound("click.wav")
+    };
+    private int soundNum;
+    private int soundIndex;
+    
     public Card(String name){
         setImage(cover);
         animal=new GreenfootImage(name+".png");
         this.name=name;
         faceUp=true;
+        
+        this.soundNum = sounds.length;
+        this.soundIndex = 0;
     }
     public void act()
     {
@@ -43,6 +62,9 @@ public class Card extends Actor
             }
         }
         
+        if(Greenfoot.mouseClicked(this)) {
+            playSound();
+        }
     }
     public String getName(){
         return this.name;
@@ -67,5 +89,39 @@ public class Card extends Actor
     }
     public static void setSecond(){
         second=null;
+    }
+    
+    /**
+     * Start playing sound if there is sound
+     */
+    public void playSound() {
+        soundIndex++;
+        if (soundIndex > (sounds.length - 1)) {
+            soundIndex = 0;
+        }
+        sounds[soundIndex].play();
+    }
+    
+    /**
+     * Pause playing sound if there is sound
+     */
+    public void pauseSound() {
+        sounds[soundIndex].pause();
+    }
+    
+    /**
+     * Method to determine weather sound is playing.
+     * @return boolean True if the sound is playing, False otherwise.
+     */
+    public boolean isSoundPlaying () {
+        return sounds[soundIndex].isPlaying();
+    }
+    
+    /**
+     * Method to get the sound in specific index.
+     * @return GreenfootSound the greenfoot sound
+     */
+    public GreenfootSound getSound (){
+        return sounds[soundIndex];
     }
 }

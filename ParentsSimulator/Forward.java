@@ -20,6 +20,7 @@ public class Forward extends Arrow
     public void act()
     {
         // Add your action code here.
+        super.act();
         int index=storyWorld.getClickIndex();
         if(Greenfoot.mouseClicked(this)&&index<4){
             storyWorld.setClickIndex(index+1);
@@ -27,7 +28,6 @@ public class Forward extends Arrow
         }
         if(Greenfoot.mouseClicked(this)&&index==4){
             Greenfoot.setWorld(new MainWorld());
-        
         }
     }
 }

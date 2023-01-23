@@ -86,6 +86,7 @@ public class PixelArtWorld extends World
         lightBlue, yellow, darkYellow, peach, darkestYellow, black, lightPink
     };
     
+    
     /** Type 1 = Cow; type 2 = Cat; type 3 = giraffe;
     private int type = Greenfoot.getRandomNumber(3);
     This can be randomized in the World that generates minigames.
@@ -128,6 +129,8 @@ public class PixelArtWorld extends World
         makeGrid(525,525); // 40 x 40 cells in the grid
         addColors();
         makeColourBar(7);
+        
+        Constants.pixelSound.playLoop();
     }
 
     public void act()
@@ -282,5 +285,22 @@ public class PixelArtWorld extends World
             finished = true;
         }
         return finished;
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.pixelSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.pixelSound.pause();
     }
 }

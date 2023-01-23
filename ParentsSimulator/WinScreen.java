@@ -12,6 +12,8 @@ public class WinScreen extends Screens
     private boolean won;
     private MainWorld mainWorld;
     
+    private GreenfootSound chessFail;
+    
     /**
      * Constructor for objects of class WinScreen.
      * 
@@ -26,12 +28,16 @@ public class WinScreen extends Screens
         this.won = won;
         this.mainWorld = mainWorld;
         
+        chessFail = new GreenfootSound("chessFail.wav");
+        
         GreenfootImage pDisplay = new GreenfootImage("You get " + points + " points", 50, border, transparent);
         
         if(won) {
+            Constants.successSound.play();
             GreenfootImage win = new GreenfootImage("Congratulations! \nYou finished the game in " + timeTaken + " seconds!", 50, border, transparent);
             getBackground().drawImage(win, 100, 50);
         } else {
+            chessFail.play();
             GreenfootImage lose = new GreenfootImage("Oops! Time is up!", 50, border, transparent);
             getBackground().drawImage(lose, 315, 75);
         }
@@ -42,7 +48,26 @@ public class WinScreen extends Screens
         if(Greenfoot.mouseClicked(this)) {
             this.mainWorld.addPoint("IQ", points/2);
             this.mainWorld.addPoint("Creativity", points/2);
+            Constants.chessSound.stop();
             Greenfoot.setWorld(mainWorld);
+            Constants.backgroundSound.playLoop();
         }
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.chessSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.chessSound.pause();
     }
 }
