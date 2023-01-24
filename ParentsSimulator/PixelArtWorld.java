@@ -14,8 +14,9 @@ public class PixelArtWorld extends World
     private int actTimes;
     private int secondsElapsed;
     private int points;
-    private TimeDisplayer timer = new TimeDisplayer(maxTime);
+    //private TimeDisplayer timer = new TimeDisplayer(maxTime);
     private PointDisplayer pointDisplay = new PointDisplayer(0);
+    private Timer timer;
     
     private int type = Greenfoot.getRandomNumber(2);
     private GreenfootImage background = new GreenfootImage("pixelArtBG.png");
@@ -101,6 +102,11 @@ public class PixelArtWorld extends World
         // Create a world with 1000x700 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1);
         main = mainWorld;
+        
+        // add timer
+        timer = new Timer(75);
+        startTimer();
+        
         addObject(timer, 215, 40);
         
         actTimes = 0;
@@ -138,12 +144,23 @@ public class PixelArtWorld extends World
         changeColours();
         
         // Counts down timer in seconds.
+        /*
         if (actTimes % 60 == 0)
         {
             secondsElapsed++;
             timer.setDisplayer(maxTime - secondsElapsed);
         }
+        */
         
+        if(75-getTimeInSeconds()>0){
+            endTimer();
+            timer.setDisplayer(75-getTimeInSeconds());
+        }
+        if(getTimeInSeconds()>=75) {
+            Greenfoot.setWorld(new WinScreen(points, getTimeInSeconds(), false, main));
+        }
+        
+        // not sure how you have points set up, but if you want to show it on the screen I also use the Score class for that (can see it in Chessboard act())
         finished = returnCompletion();
         if (finished)
         {
@@ -302,5 +319,111 @@ public class PixelArtWorld extends World
      */
     public void stopped() {
         Constants.pixelSound.pause();
+    }
+    
+    // mr cohen's timer class
+    /**
+     * A very simply Timer class that functions as a virtual stopwatch.
+     * 
+     * This can be used as a semi-accurate method of measuring the elapsed time
+     * while some code is running. It can be used as a timer in a game, or to
+     * track the efficiency of some procedure. Methods for stop, start and reset
+     * allow easy control of Timer objects. Methods are included that return 
+     * seconds (as an int), milliseconds (as a float) or a formatted String.
+     * 
+     * @author Jordan Cohen
+     * @version v1.0.2
+     */
+    private long startTime;
+    private long endTime;
+
+    /**
+     * Start the Timer
+     */
+    public void startTimer()
+    {
+        startTime = System.nanoTime();
+    }
+
+    /**
+     * Stop the Timer
+     */
+    public void endTimer ()
+    {
+        endTime = System.nanoTime();
+    }
+
+    /**
+     * Reset the Timer
+     */
+    public void resetTimer ()
+    {
+        startTime = 0;
+        endTime = 0;
+    }
+
+    /**
+     * Returns elapsed time as a neatly formatted String. Most practical for
+     * applications where output (rather than calculation) is the goal. The
+     * exact format will depend on the time elapsed - either ms, sec, or min:sec.
+     * 
+     * @return String   neatly formatted display of time elapsed
+     */
+    public String getTimeString ()
+    {
+        if ((endTime - startTime) < 1000000)
+        {
+            return (endTime - startTime) + "ns";
+        }
+        // Less than 1 second
+        if ((endTime - startTime)/1000000000 < 1)
+        {
+            return getTimeInMilliseconds() + " ms";
+        }
+        else if ((endTime - startTime)/1000000000 < 60)
+        {
+            return getTimeInPreciseSeconds() + " sec";
+        }
+        
+        int minutes = getTimeInSeconds() / 60;
+        float seconds = getTimeInPreciseSeconds() - ((float)minutes * 60);
+        return minutes + " min " + seconds + " sec";
+    }
+    
+    /**
+     * Return the elapsed time in seconds. This assumes that the timer has already
+     * been started and stopped (but not reset). For very short durations, this will
+     * return zero even though some time has elapsed.
+     * 
+     * @return int  The number of seconds elapsed, as an int.
+     */
+    public int getTimeInSeconds ()
+    {
+        return (int)((double)(endTime - startTime) / 1000000000.0);
+    }
+    
+    /**
+     * Return the elapsed time in seconds. This assumes that the timer has already
+     * been started and stopped (but not reset). For very short durations, this will
+     * return zero even though some time has elapsed.
+     * 
+     * @return float  The number of seconds elapsed, as an int.
+     */
+    public float getTimeInPreciseSeconds ()
+    {
+        return (float)((double)(endTime - startTime) / 1000000000.0);
+    }
+
+    /**
+     * Return the elapsed time in seconds. This assumes that the timer has already
+     * been started and stopped (but not reset). This will return the value as a 
+     * float and is most useful for shorter durations where second is not accurate
+     * enough.
+     * 
+     * @return float  The number of milliseconds elapsed, as a float.
+     */
+    public float getTimeInMilliseconds ()
+    {
+        return (float)((double)(endTime - startTime) / 1000000.0);
     }
 }
