@@ -65,10 +65,11 @@ public class ActivityEffectWorld extends AbstractWorld {
         String[] answers = Constants.randomChoiceAnswers[stage][questionNumber];
         int[][] results = Constants.randomChoiceResults[stage][questionNumber];
         
-        GreenfootImage image = new GreenfootImage(this.background);
+        GreenfootImage image = new GreenfootImage(1000, 700);
+        image.setColor(new Color(253,234,232,254));
+        image.fill();
         image.drawImage(new GreenfootImage("randomChoicesQuestion.png"), 0, 0);
         image.drawImage(new GreenfootImage(question, 30, Color.GRAY, new Color(0, 0, 0, 0)), 130, 130);
-        
         setBackground(image);
         
         for (int i = 0; i < answers.length; i++) {
