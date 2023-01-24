@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Write a description of class Chessboard here.
  * 
- * @author (your name) 
+ * @Fiona Ho 
  * @version (a version number or a date)
  */
 public class Chessboard extends World {
@@ -66,7 +66,7 @@ public class Chessboard extends World {
     }
     
     public int checkPoints() {
-        return (60 - getTimeInSeconds()) /5 *2;
+        return (60 - getTimeInSeconds()) /5 *2 + 2;
     }
     
     public void setBoard() {
