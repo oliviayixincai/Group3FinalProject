@@ -45,7 +45,7 @@ public class End_World extends World
         Arrays.sort(stats_values);
         
         endText=new Flashing_Text(new GreenfootImage("endInstruction.png"));
-        addObject(endText, 512, 600);
+        addObject(endText, 512, 630);
         if (UserInfo.isStorageAvailable()) { // check if connected
             user = UserInfo.getMyInfo();
         }
