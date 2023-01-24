@@ -17,6 +17,7 @@ public class Game_Result_World extends World
     private GreenfootImage background = new GreenfootImage("confetti.png");
     private MainWorld mainWorld;
     private int waitTime=60;
+    private Flashing_Text backText = new Flashing_Text(new GreenfootImage("goBackImage.png"));
     
     private GreenfootSound sound;
     /**
@@ -38,7 +39,7 @@ public class Game_Result_World extends World
         statAffected2 = stat2;
         
         setBackground(background);
-        
+        addObject(backText, 512, 520);
         if(on_time){
             GreenfootImage isSuccessful=new GreenfootImage("Congratulations! You finished the game in "+ total_time +" sec!", 30, Color.BLACK, transparent);  
             GreenfootImage displayPoints=new GreenfootImage("You get "+ result_points +" points.", 50, Color.BLACK, transparent);
