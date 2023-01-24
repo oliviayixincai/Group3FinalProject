@@ -636,6 +636,6 @@ target9.x=0
 target9.y=0
 version=3.0.0
 width=1363
-world.lastInstantiated=End_World
+world.lastInstantiated=Story_World
 xPosition=77
 yPosition=25
