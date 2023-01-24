@@ -25,6 +25,15 @@ public class ScheduleWorld extends AbstractWorld
     
     private ScheduleItem[][] scheduleTable;
     
+    private static GreenfootSound[] sounds = {
+        new GreenfootSound("glope1.wav"),
+        new GreenfootSound("glope2.wav"),
+        new GreenfootSound("glope3.wav"),
+        new GreenfootSound("glope4.wav"),
+    };
+    private int soundNum;
+    private int soundIndex;
+    
     /**
      * Constructor for objects of class ScheduleWorld.
      * 
@@ -46,6 +55,9 @@ public class ScheduleWorld extends AbstractWorld
         this.scheduleTable = initScheduleTable();
         
         initSelection();
+        
+        this.soundNum = sounds.length;
+        this.soundIndex = 0;
     }
     
     public void act() {
@@ -68,6 +80,7 @@ public class ScheduleWorld extends AbstractWorld
                 if (scheduleItem.canSetActivity(activity)) {
                     tryClearActivity(activity);
                     scheduleItem.setActivity(activity);
+                    playSound();
                     return;
                 }
             }
@@ -136,4 +149,14 @@ public class ScheduleWorld extends AbstractWorld
         return true;
     }
 
+    /**
+     * Start playing sound if there is sound
+     */
+    public void playSound() {
+        soundIndex++;
+        if (soundIndex > (sounds.length - 1)) {
+            soundIndex = 0;
+        }
+        sounds[soundIndex].play();
+    }
 }

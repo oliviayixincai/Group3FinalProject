@@ -1,8 +1,17 @@
+import greenfoot.GreenfootSound;
+
 /**
- * Write a description of class Constants here.
+ * This class is a place to store the static or final object and variables, which 
+ * can make sure the switch between worlds can be smooth and to protect some values.
+ * 
+ * backgroundMusic
+ * Music by <a href="https://pixabay.com/users/23117649-23117649/?utm_source=link-attributi
+ * on&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=7741">23117649</a> from
+ * <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_c
+ * ampaign=music&amp;utm_content=7741">Pixabay</a>
  * 
  * @author Yixin Cai
- * @version 2023-01-21
+ * @version 2023-01-23
  */
 public class Constants  
 {
@@ -68,5 +77,14 @@ public class Constants
         { { {2,0,2,0}, {0,2,0,2}, {-2,0,-2,0} }, { {0,2,0,2}, {2,0,2,0}, {0,-2,0,-2} } },
         { { {3,0,3,0}, {0,3,0,3}, {-3,0,-3,0} }, { {0,3,0,3}, {3,0,3,0}, {0,-3,0,-3} } },
     };
-
+    
+    
+    // I know the most recommended format is wav, but its size is too big about 38MB.
+    // Therfore, I use mp3 format to reduce the size to 6 MB.
+    public static final GreenfootSound backgroundSound = new GreenfootSound("main.mp3");
+    public static final GreenfootSound pixelSound = new GreenfootSound("pixel.mp3");
+    public static final GreenfootSound chessSound = new GreenfootSound("chess.mp3");
+    public static final GreenfootSound memorySound = new GreenfootSound("memory.mp3");
+    public static final GreenfootSound successSound = new GreenfootSound("success.wav");
+    public static final GreenfootSound failSound = new GreenfootSound("fail.wav");
 }

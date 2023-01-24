@@ -5,12 +5,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
+ * 
+ * backgroundImage by Siti Fatona
+ * <a href="https://www.vecteezy.com/free-vector/cute-background">Cute Background Vectors by Vecteezy</a>
  */
 public class Game_Intro_World extends World
 {
 
     
-    private GreenfootImage background = new GreenfootImage("wallpaper.jpeg");
+    private GreenfootImage background = new GreenfootImage("memory_intro.jpg");
     private GreenfootImage welcomeText;
     private Flashing_Text flashText;
     private GreenfootImage clickImage;
@@ -33,10 +36,29 @@ public class Game_Intro_World extends World
         flashText=new Flashing_Text(clickImage);
         addObject(flashText, 500, 600);
         
+        Constants.memorySound.playLoop();
     }
     public void act(){
         if(Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(flashText)){
             Greenfoot.setWorld(new Memory_Game_World(main));
         }
+    }
+    
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.memorySound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.memorySound.pause();
     }
 }

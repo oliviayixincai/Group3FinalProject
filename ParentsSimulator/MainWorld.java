@@ -5,7 +5,7 @@ import java.util.*;
  * Write a description of class MyWorld here.
  * 
  * @author Yixin Cai
- * @version 2023-01-21
+ * @version 2023-01-22
  */
 public class MainWorld extends World
 {
@@ -18,6 +18,10 @@ public class MainWorld extends World
     private Button playChessButton;
     
     private Map<String, Stat> statMap;
+    
+    private boolean playArtGame=false;
+    private boolean playMemoryGame=false;
+    private boolean playMazeGame=false;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -57,6 +61,8 @@ public class MainWorld extends World
         this.statMap.put("Memory", memoryStat);
         this.statMap.put("Creativity", creativityStat);
         
+        Constants.backgroundSound.playLoop();
+        
         setBackground();
     }
     
@@ -64,7 +70,9 @@ public class MainWorld extends World
         // Game about to finish
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
-            this.tik++;
+            if(playArtGame && playMazeGame && playMemoryGame){
+                this.tik++;
+            }
             if (this.tik > 150) {
                 int[] stats = {
                     this.statMap.get("IQ").getValue(),
@@ -75,22 +83,32 @@ public class MainWorld extends World
                 End_World ew = new End_World(stats);
                 Greenfoot.setWorld(ew);
             }
-            return;
+            //return;
         }
         
         if (Greenfoot.mouseClicked(this.scheduleButton)) {
+            this.scheduleButton.playSound();
             ScheduleWorld sw = new ScheduleWorld(this);
             Greenfoot.setWorld(sw);
         }
         else if (Greenfoot.mouseClicked(this.playPixelArtButton)) {
+            stopSound();
+            this.playPixelArtButton.playSound();
+            playArtGame=true;
             PixelArtWorld prw = new PixelArtWorld(this);
             Greenfoot.setWorld(prw);
         }
         else if (Greenfoot.mouseClicked(this.playMemoryButton)) {
+            stopSound();
+            this.playMemoryButton.playSound();
+            playMemoryGame=true;
             Game_Intro_World giw = new Game_Intro_World(this);
             Greenfoot.setWorld(giw);
         }
         else if (Greenfoot.mouseClicked(this.playChessButton)) {
+            stopSound();
+            this.playChessButton.playSound();
+            playMazeGame=true;
             OpeningScreen cb = new OpeningScreen(this);
             Greenfoot.setWorld(cb);
         }
@@ -142,5 +160,25 @@ public class MainWorld extends World
         GreenfootImage background = new GreenfootImage(fileName);
         setBackground(background);
     }
-
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        stopSound();
+    }
+    
+    private void stopSound() {
+        Constants.backgroundSound.pause();
+    }
 }

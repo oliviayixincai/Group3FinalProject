@@ -17,5 +17,23 @@ public abstract class AbstractWorld extends World {
         // Create a new world with 1000x700 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1);
         this.mainWorld = mainWorld;
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.backgroundSound.pause();
     }
 }

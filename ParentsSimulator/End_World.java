@@ -14,6 +14,7 @@ public class End_World extends World
     private int highScore;
     private String bestJob;
     private int score;
+    private boolean showBoard=false;
     
     private Map<String, Integer> stat_bars=new HashMap<String, Integer>();
     private int[] stats_values; 
@@ -154,9 +155,11 @@ public class End_World extends World
             user.setString(1, bestJob);
             user.store();
         }
-
-        addObject (new ScoreBoard(720, 480), 512, 320);
         
+        if(showBoard==false){
+            addObject (new ScoreBoard(720, 480), 512, 320);
+            showBoard=true;
+        }
         Greenfoot.stop();   
     }
 }

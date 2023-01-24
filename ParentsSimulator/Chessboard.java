@@ -365,4 +365,21 @@ public class Chessboard extends World {
     {
         return (float)((double)(endTime - startTime) / 1000000.0);
     }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.chessSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.chessSound.pause();
+    }
 }
