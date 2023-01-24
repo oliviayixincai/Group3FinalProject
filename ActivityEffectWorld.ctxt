@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ActivityEffectWorld
+comment0.text=\n\ Write\ a\ description\ of\ class\ ActivityWorld\ here.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ 2023-01-21\n
+comment1.params=mainWorld\ scheduleTable
+comment1.target=ActivityEffectWorld(MainWorld,\ ScheduleItem[][])
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ActivityWorld.\n\ \n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ playNextEffect()
+comment4.params=questionNumber
+comment4.target=void\ startRandomChoice(int)
+comment5.params=results
+comment5.target=void\ finishRandomChoice(int[])
+comment6.params=points
+comment6.target=void\ updatePoints(int[])
+comment7.params=scheduleTable
+comment7.target=java.util.Queue\ toActivityQueue(ScheduleItem[][])
+comment8.params=
+comment8.target=void\ finishWorld()
+numComments=9
