@@ -2,10 +2,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.util.Arrays;
 /**
- * Write a description of class End_World here.
+ * EndWorld finds out the correlated outcome for each child based on the highest two stats. It stores the 
+ * highest user history and display it on the user board 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @Jan 2023 
  */
 public class End_World extends World
 {
@@ -23,10 +24,12 @@ public class End_World extends World
     private String job;
     private boolean display=false;
     
+    private Flashing_Text endText;
     private GreenfootImage text1, text2, text3;
     private Color transparent;
     /**
-     * Constructor for objects of class End_World.
+     * Constructor for objects of class End_World. Get the user info and store the stats in the 
+     * instance variables
      * 
      */
     public End_World(int[] stats)
@@ -40,17 +43,16 @@ public class End_World extends World
         stat_bars.put("Creativity", stats[3]);
         stats_values=stats;
         Arrays.sort(stats_values);
+        
+        endText=new Flashing_Text(new GreenfootImage("endInstruction.png"));
+        addObject(endText, 512, 600);
         if (UserInfo.isStorageAvailable()) { // check if connected
             user = UserInfo.getMyInfo();
         }
         if (user != null){ // check if logged in
             highScore = user.getScore();
             bestJob = user.getString(1);
-            //scoreBar.update("Welcome " + user.getUserName() + "! Don't Die! High score: " + highScore);
-
-        } else {
-            //scoreBar.update("Please Login to Play with full features!");
-        }
+        } 
     }
     
     public void act(){
@@ -59,11 +61,14 @@ public class End_World extends World
             find_job();
             display=true;
         }
-        if(Greenfoot.mouseClicked(this)){
+        if((Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(endText))&&showBoard==false){
             endGame();
         }
     }
     
+    /**
+     * find the highest two stats
+     */
     public void findMax(){
         for(String key: stat_bars.keySet()) {
             if(stat_bars.get(key)==stats_values[3]){
@@ -80,7 +85,10 @@ public class End_World extends World
             }
         }
     }
-    
+
+    /**
+     * find the correlated job of the child based on the highest two stats and displays the image and story
+     */
     public void find_job(){
         GreenfootImage text3 = new GreenfootImage("You must be a very proud parent :)", 60, Color.BLACK, transparent);
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("EQ")||second.equals("EQ"))){
@@ -134,11 +142,16 @@ public class End_World extends World
         getBackground().drawImage(text3, 75, 500);
     }
     
+    /**
+     * store the user result when greenfoot is stopped
+     */
     public void stopped(){
         user.store();
     }
     
-    //store user info
+    /**
+     * calculate the user info and compare the new result and the history result, show the user result board
+     */
     private void endGame() {
         // calculate score by adding up all stats
         for(int i: stats_values){
@@ -156,10 +169,9 @@ public class End_World extends World
             user.store();
         }
         
-        if(showBoard==false){
-            addObject (new ScoreBoard(720, 480), 512, 320);
-            showBoard=true;
-        }
+        addObject (new ScoreBoard(720, 480), 512, 320);
+        showBoard=true;
+        
         Greenfoot.stop();   
     }
 }

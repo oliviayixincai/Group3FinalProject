@@ -6,6 +6,9 @@ import java.util.*;
  * 
  * @author Yixin Cai
  * @version 2023-01-22
+ * 
+ * Pointing Finger by Dave Gandy
+ * <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Dave Gandy - Flaticon</a>
  */
 public class MainWorld extends World
 {
