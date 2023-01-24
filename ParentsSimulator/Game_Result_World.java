@@ -68,7 +68,7 @@ public class Game_Result_World extends World
     public void act() {
         //go back to the main world and set the stats
         waitTime--;
-        if (Greenfoot.mouseClicked(this)&&waitTime<=0) {
+        if ((Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(backText))&&waitTime<=0) {
             this.mainWorld.addPoint(statAffected1, result_points/2);
             this.mainWorld.addPoint(statAffected2, result_points-result_points/2);
             Constants.pixelSound.stop();

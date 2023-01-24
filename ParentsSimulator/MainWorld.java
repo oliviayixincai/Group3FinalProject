@@ -18,6 +18,10 @@ public class MainWorld extends World
     private Button playChessButton;
     
     private Map<String, Stat> statMap;
+    
+    private boolean playArtGame=false;
+    private boolean playMemoryGame=false;
+    private boolean playMazeGame=false;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -66,7 +70,9 @@ public class MainWorld extends World
         // Game about to finish
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
-            this.tik++;
+            if(playArtGame && playMazeGame && playMemoryGame){
+                this.tik++;
+            }
             if (this.tik > 150) {
                 int[] stats = {
                     this.statMap.get("IQ").getValue(),
@@ -77,7 +83,7 @@ public class MainWorld extends World
                 End_World ew = new End_World(stats);
                 Greenfoot.setWorld(ew);
             }
-            return;
+            //return;
         }
         
         if (Greenfoot.mouseClicked(this.scheduleButton)) {
@@ -88,18 +94,21 @@ public class MainWorld extends World
         else if (Greenfoot.mouseClicked(this.playPixelArtButton)) {
             stopSound();
             this.playPixelArtButton.playSound();
+            playArtGame=true;
             PixelArtWorld prw = new PixelArtWorld(this);
             Greenfoot.setWorld(prw);
         }
         else if (Greenfoot.mouseClicked(this.playMemoryButton)) {
             stopSound();
             this.playMemoryButton.playSound();
+            playMemoryGame=true;
             Game_Intro_World giw = new Game_Intro_World(this);
             Greenfoot.setWorld(giw);
         }
         else if (Greenfoot.mouseClicked(this.playChessButton)) {
             stopSound();
             this.playChessButton.playSound();
+            playMazeGame=true;
             OpeningScreen cb = new OpeningScreen(this);
             Greenfoot.setWorld(cb);
         }
