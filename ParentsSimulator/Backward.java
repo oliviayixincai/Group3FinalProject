@@ -21,6 +21,7 @@ public class Backward extends Arrow
     public void act()
     {
         // Add your action code here.
+        super.act();
         int index=storyWorld.getClickIndex();
         if(Greenfoot.mouseClicked(this)&&index>=1){
             storyWorld.setClickIndex(index-1);

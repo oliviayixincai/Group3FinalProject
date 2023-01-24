@@ -31,6 +31,8 @@ public class Memory_Game_World extends World
     private long endTime;
     private int points;
     private MainWorld main;
+    
+    private GreenfootSound matchSound;
     /**
      * Constructor for the memory game. Add and shuffle the cards when the world is initialized. 
      * Start the count down timer and the point displayer
@@ -74,6 +76,8 @@ public class Memory_Game_World extends World
         addObject(pointDisplay, 800, 50);
         startTime=System.nanoTime();
         points=0;
+        
+        matchSound = new GreenfootSound("memoryCard.wav");
     }
     
     public void act(){
@@ -85,6 +89,7 @@ public class Memory_Game_World extends World
                 //remove the cards and reset the first flip and second flip
                 countDown();
                 if(waittime==0){
+                    matchSound.play();
                     removeObject(first_card);
                     removeObject(second_card);
                     first_card=null;
@@ -127,6 +132,7 @@ public class Memory_Game_World extends World
             Greenfoot.setWorld(new Game_Result_World(points, getTimeInSeconds(), false, main, "Memory", "Creativity"));
         }
     }
+    
     /**
      * start count down if the wait time is above 0
      */
@@ -135,6 +141,7 @@ public class Memory_Game_World extends World
             waittime--;
         }
     }
+    
     /**
      * check if all cards are removed
      * @return boolean true if there are no cards remain in world, false if there are still cards in world 
@@ -145,6 +152,7 @@ public class Memory_Game_World extends World
         }
         return false;
     }
+    
     /**
      * calculate the time passed in seconds
      * @return int the time in seconds
@@ -152,5 +160,22 @@ public class Memory_Game_World extends World
     public int getTimeInSeconds ()
     {
         return (int)((double)(endTime - startTime) / 1000000000.0);
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.memorySound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.memorySound.pause();
     }
 }

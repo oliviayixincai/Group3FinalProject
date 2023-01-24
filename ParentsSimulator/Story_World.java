@@ -22,6 +22,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * baby pic
  * https://www.peakpx.com/en/hd-wallpaper-desktop-alevu
  * 
+ * backgroundMusic
+ * Music by <a href="https://pixabay.com/users/23117649-23117649/?utm_source=link-attributi
+ * on&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=7741">23117649</a> from
+ * <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_c
+ * ampaign=music&amp;utm_content=7741">Pixabay</a>
+ * 
  * welcome picture by dpproductions
  * https://www.istockphoto.com/photos/front-door
  * https://abeautifulmess.com/first-things-first-a-pink-front-door/
@@ -59,14 +65,16 @@ public class Story_World extends World
         addObject(forward, 920, 610);
         backward=new Backward(this);
     }
+    
     public void act(){
         if(clickIndex>0){
             addObject(backward, 80, 610);
         }
-        else{
+        else {
             removeObject(backward);
         }
     }
+    
     /**
      * get the current page number of story
      * @return int the current page number 
@@ -74,6 +82,7 @@ public class Story_World extends World
     public int getClickIndex(){
         return clickIndex;
     }
+    
     /**
      * set the page number 
      * @param num the page number
@@ -81,6 +90,7 @@ public class Story_World extends World
     public void setClickIndex(int num){
         clickIndex=num;
     }
+    
     /**
      * flip the story page by setting a new background and add the 
      * corresponding story
@@ -88,5 +98,22 @@ public class Story_World extends World
     public void setStory(){
         setBackground(backgrounds[clickIndex]);
         getBackground().drawImage(stories[clickIndex], 200, 530);
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.backgroundSound.pause();
     }
 }
