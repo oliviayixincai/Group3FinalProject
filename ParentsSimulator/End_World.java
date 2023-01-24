@@ -143,13 +143,6 @@ public class End_World extends World
     }
     
     /**
-     * store the user result when greenfoot is stopped
-     */
-    public void stopped(){
-        user.store();
-    }
-    
-    /**
      * calculate the user info and compare the new result and the history result, show the user result board
      */
     private void endGame() {
@@ -171,7 +164,7 @@ public class End_World extends World
         
         addObject (new ScoreBoard(720, 480), 512, 320);
         showBoard=true;
+        user.store();
         
-        Greenfoot.stop();   
     }
 }

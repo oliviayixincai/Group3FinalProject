@@ -76,10 +76,7 @@ public class MainWorld extends World
         // Game about to finish
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
-            if(playArtGame && playMazeGame && playMemoryGame){
-                this.tik++;
-            }
-            if (this.tik > 150) {
+            if(playArtGame && playMazeGame && playMemoryGame && Greenfoot.mouseClicked(this)){
                 int[] stats = {
                     this.statMap.get("IQ").getValue(),
                     this.statMap.get("EQ").getValue(),
