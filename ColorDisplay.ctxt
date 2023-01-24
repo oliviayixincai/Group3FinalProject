@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ColorDisplay
+comment0.text=\n\ This\ Actor\ is\ used\ in\ PixelArtWorld\ to\ display\ each\ colour\ that\ is\ needed\ to\ complete\n\ the\ pixel\ art.\n\ \n\ @author\ Gloria\ Chan\n\ @version\ January\ 19,\ 2023\n
+comment1.params=size\ colour\ num
+comment1.target=ColorDisplay(int,\ greenfoot.Color,\ int)
+comment1.text=\n\ Accepts\ specific\ size\ parameters.\ The\ colour\ parameter\ is\ the\ colour\ of\ the\ block\n\ and\ the\ number\ parameter\ displays\ the\ number\ that\ the\ colour\ is\ associated\ with.\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3
