@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Timer here.
+ * Displays the time left over in Chess game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version final
  */
 public class Timer extends LabelAbstract
 {
