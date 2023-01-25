@@ -27,7 +27,8 @@ public class ActivityEffectWorld extends AbstractWorld {
         this.pointsSum = new int[] {0,0,0,0};
         this.randomChoiceIndex = 0;
         
-        this.background = getBackground();
+        background = new GreenfootImage("activityBG.png");
+        setBackground(background);
     }
     
     public void act() {
@@ -54,8 +55,10 @@ public class ActivityEffectWorld extends AbstractWorld {
         }
         else {
             updatePoints(activity.getPoints());
-            effect = new FadeEffect(new GreenfootImage("activity" + activity.getName() + "Icon.png"));
-            addObject(effect, getWidth() / 2, getHeight() / 2);
+            GreenfootImage activityEnlarged = new GreenfootImage("activity" + activity.getName() + "Icon.png");
+            activityEnlarged.scale(420,360);
+            effect = new FadeEffect(new GreenfootImage(activityEnlarged));
+            addObject(effect, getWidth() / 2 + 30, getHeight() / 2 + 50);
         }
     }
     

@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Title_World
-comment0.text=\n\ Displays\ the\ game\ title\ and\ homescreen\ along\ with\ a\ "Play"\ button\ to\ start\ the\ game.\n\ \n\ @author\ Gloria\ Chan\n\ @version\:\ January\ 24,\ 2023\n\ \n\ CREDIT\:\ Background\ image\ from\:\ https\://www.pinterest.ca/pin/18366310973098552/\n
-comment1.params=
-comment1.target=Title_World()
-comment1.text=\n\ Sets\ up\ the\ background\ image\ and\ adds\ a\ "Play"\ button.\n\ \n
-comment2.params=
-comment2.target=void\ act()
-numComments=3
