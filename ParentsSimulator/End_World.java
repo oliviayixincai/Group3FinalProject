@@ -67,6 +67,10 @@ public class End_World extends World
             endGame();
         }
         count++;
+        if(count == 300) {
+            setBackground(new GreenfootImage(job+".png"));
+            //setBackground(new GreenfootImage(job+"Desc.png"));
+        }
     }
     
     /**
@@ -96,59 +100,23 @@ public class End_World extends World
         GreenfootImage text3 = new GreenfootImage("You must be a very proud parent :)", 60, Color.BLACK, transparent);
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("EQ")||second.equals("EQ"))){
             job="doctor";
-            setBackground(new GreenfootImage(job+"Intro.png"));
-            if(count > 600) {
-                setBackground(new GreenfootImage(job+".png"));
-                setBackground(new GreenfootImage(job+"Desc.png"));
-            }
-            /*
-            text1 = new GreenfootImage("After high school, \nyour child applied to medical school \nand worked hard to help others as a", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("doctor!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 100);
-            getBackground().drawImage(text2, 275, 275);
-            */
         }
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="programmer";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child improved their computer skills \nand was hired as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("programmer!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 60, 125);
-            getBackground().drawImage(text2, 85, 275);
         }
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("Memory")||second.equals("Memory"))){
             job="lawyer";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child studied hard for a law degree \nand passed the exam to become a", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("lawyer!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 75, 100);
-            getBackground().drawImage(text2, 275, 275);
         }
         if((first.equals("EQ")||second.equals("EQ"))&&(first.equals("Memory")||second.equals("Memory"))){
             job="teacher";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child fulfilled their dream of \nhelping teach others as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("teacher!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 150, 115);
-            getBackground().drawImage(text2, 255, 300);
         }
         if((first.equals("EQ")||second.equals("EQ"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="artist";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child went on to fill displays and\nexhibits for their work as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("artist!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 100);
-            getBackground().drawImage(text2, 300, 275);
         }
         if((first.equals("Memory")||second.equals("Memory"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="actor";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child practiced their acting skills \nand moved to Hollywood to be an", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("actor!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 125);
-            getBackground().drawImage(text2, 325, 300);
         }
-        getBackground().drawImage(text3, 75, 500);
+        setBackground(new GreenfootImage(job+"Intro.png"));
     }
     
     /**

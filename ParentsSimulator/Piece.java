@@ -1,15 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Piece here.
+ * Superclass for the maze parts of the chessboard
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version final
  */
 public class Piece extends Actor
 {
     protected GreenfootImage i = new GreenfootImage(50,50);
     
+    /**
+     * Constructor for Piece
+     */
     public Piece() {
         i = new GreenfootImage("path.png");
         //i.setColor(Color.GRAY);
