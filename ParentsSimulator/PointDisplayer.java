@@ -16,6 +16,9 @@ public class PointDisplayer extends LabelAbstract
         this.value=value;
     }
     
+    /**
+     * update the points
+     */
     public void updateImage()
     {
         //display number for displayer

@@ -1,25 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Flashing_Text here.
+ * Add a text image to create a blinking effect
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li  
+ * @version Jan 2023
  */
 public class Flashing_Text extends Actor
 {
-    /**
-     * Act - do whatever the Flashing_Text wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage textImage;
     private int time=3;
     private boolean flash=true;
     
+    /**
+     * constructor for the flashing_Text
+     * @param text the text that will blink 
+     */
     public Flashing_Text(GreenfootImage text){
         textImage=text;
         setImage(textImage);
     }
+    
     public void act()
     {
         // Add your action code here.
