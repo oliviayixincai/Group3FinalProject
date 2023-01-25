@@ -6,6 +6,9 @@ import java.util.*;
  * 
  * @author Yixin Cai
  * @version 2023-01-22
+ * 
+ * Pointing Finger by Dave Gandy
+ * <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Dave Gandy - Flaticon</a>
  */
 public class MainWorld extends World
 {
@@ -16,6 +19,7 @@ public class MainWorld extends World
     private Button playPixelArtButton;
     private Button playMemoryButton;
     private Button playChessButton;
+    private Flashing_Text pointingFinger;
     
     private Map<String, Stat> statMap;
     
@@ -45,6 +49,8 @@ public class MainWorld extends World
         addObject(playMemoryButton, 130, 195);
         this.playChessButton = new Button("buttonChessGame.png");
         addObject(playChessButton, 160, 95);
+        this.pointingFinger = new Flashing_Text(new GreenfootImage("pointingFinger.png"));
+        addObject(pointingFinger, 320, 150);
         
         Stat iqStat = new Stat(0);
         Stat eqStat = new Stat(0);
@@ -70,10 +76,7 @@ public class MainWorld extends World
         // Game about to finish
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
-            if(playArtGame && playMazeGame && playMemoryGame){
-                this.tik++;
-            }
-            if (this.tik > 150) {
+            if(playArtGame && playMazeGame && playMemoryGame && Greenfoot.mouseClicked(this)){
                 int[] stats = {
                     this.statMap.get("IQ").getValue(),
                     this.statMap.get("EQ").getValue(),
