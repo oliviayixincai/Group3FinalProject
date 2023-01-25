@@ -3,13 +3,14 @@ import java.util.ArrayList;
 import greenfoot.GreenfootImage;
 
 /**
- * Write a description of class ScheduleWorld here.
+ * This is a world  
  * 
  * @author Yixin Cai
  * @version 2023-01-21
  */
 public class ScheduleWorld extends AbstractWorld
 {
+    // declare and initialize all the variables and objects here
     public static final int DEFAULT_ITEM_WIDTH = 120;
     public static final int DEFAULT_ITEM_HEIGHT = 90;
     
@@ -25,27 +26,27 @@ public class ScheduleWorld extends AbstractWorld
     
     private ScheduleItem[][] scheduleTable;
     
+    // It is a design of different types of glope sounds.
+    // But the differences between them is too small to notice. so sad:(
     private static GreenfootSound[] sounds = {
         new GreenfootSound("glope1.wav"),
         new GreenfootSound("glope2.wav"),
         new GreenfootSound("glope3.wav"),
         new GreenfootSound("glope4.wav"),
     };
-    private int soundNum;
-    private int soundIndex;
+    private int soundNum = sounds.length;
+    private int soundIndex = 0;
     
     /**
      * Constructor for objects of class ScheduleWorld.
-     * 
+     * @param mainWorld a object of MainWorld
      */
     public ScheduleWorld(MainWorld mainWorld)
     {
         super(mainWorld);
-        
+
         setBackground(new GreenfootImage("backgroundSchedule.png"));
-        
         addObject(new Label(this.mainWorld.getStageText()), 500, 20);
-        
         this.finishButton = new Button("buttonSchedule.png");
         
         scheduleText = new GreenfootImage("scheduleText.png");
@@ -56,11 +57,18 @@ public class ScheduleWorld extends AbstractWorld
         
         initSelection();
         
+        // for the sound index
         this.soundNum = sounds.length;
         this.soundIndex = 0;
     }
     
+    /**
+     * Act - do whatever the ScheduleWorld wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
+        // once player finished the filling schedule, move on the the 
+        // ActivityEffectWorld to show the activitis effects.
         if (Greenfoot.mouseClicked(this.finishButton)) {
             ActivityEffectWorld aew = new ActivityEffectWorld(this.mainWorld, this.scheduleTable);
             Greenfoot.setWorld(aew);
@@ -68,15 +76,24 @@ public class ScheduleWorld extends AbstractWorld
         
         initSelection();
         
+        // Only add the finish button when player fills in all of the blocks
         if (canFinish() && finishButton.getWorld() == null) {
             addObject(this.finishButton, 210, 620);
         }
     }
     
+    /**
+     * This is a method used to set activities with sound effect. 
+     * First, it will determine weather it is allowed to set activity
+     * if it does, set activity, if it doesn't, do nothing.
+     * @param activity This is an object of Activity
+     */
     public void trySetActivity(Activity activity) {
+        //check every blocks in the schedule table.
         for (int i = 0; i < scheduleTable.length; i++) {
             for (int j = 0; j < scheduleTable[i].length; j++) {
                 ScheduleItem scheduleItem = scheduleTable[i][j];
+                // check if it allowed to set the activity in this block
                 if (scheduleItem.canSetActivity(activity)) {
                     tryClearActivity(activity);
                     scheduleItem.setActivity(activity);
@@ -87,6 +104,9 @@ public class ScheduleWorld extends AbstractWorld
         }
     }
     
+    /**
+     * This is a method used to
+     */
     private void tryClearActivity(Activity activity) {
         for (int i = 0; i < scheduleTable.length; i++) {
             for (int j = 0; j < scheduleTable[i].length; j++) {
@@ -99,6 +119,11 @@ public class ScheduleWorld extends AbstractWorld
         }
     }
     
+    /**
+     * This is a method used to add the activity based o the mouse location
+     * If the mouse's location is in the central part of the whole block, the
+     * activity will be added.
+     */
     private void initSelection() {
         int borderX = 10;
         int borderY = 15;
@@ -125,6 +150,10 @@ public class ScheduleWorld extends AbstractWorld
         }
     }
     
+    /**
+     * This is a method to return the schedule table
+     * @return ScheduleItem[][] the table with the schesuleItem
+     */
     private ScheduleItem[][] initScheduleTable() {
         int borderX = -1;
         int borderY = 3;
@@ -137,6 +166,11 @@ public class ScheduleWorld extends AbstractWorld
         return table;
     }
     
+    /**
+     * This is a method to determine weather can finish the scheduleTable
+     * @return boolean True if the scheduleTable is full of activities,
+     * false otherwise
+     */
     private boolean canFinish() {
         for (int i = 0; i < scheduleTable.length; i++) {
             for (int j = 0; j < scheduleTable[i].length; j++) {
