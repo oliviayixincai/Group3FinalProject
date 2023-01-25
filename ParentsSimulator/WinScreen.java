@@ -20,7 +20,7 @@ public class WinScreen extends Screens
      */
     public WinScreen(int points, int timeTaken, boolean won, MainWorld mainWorld) {    
         super();
-        getBackground().drawImage(new GreenfootImage("yay.png"), 250, 175);
+        getBackground().drawImage(new GreenfootImage("yay.png"), 290, 180);
         // image from https://learningworksforkids.com/vector-illustration-of-retro-pastel-color-smile-pink-brain-with-2/
         
         this.points = points;
@@ -35,13 +35,14 @@ public class WinScreen extends Screens
         if(won) {
             Constants.successSound.play();
             GreenfootImage win = new GreenfootImage("Congratulations! \nYou finished the game in " + timeTaken + " seconds!", 50, border, transparent);
-            getBackground().drawImage(win, 100, 50);
+            getBackground().drawImage(win, 125, 50);
         } else {
             chessFail.play();
             GreenfootImage lose = new GreenfootImage("Oops! Time is up!", 50, border, transparent);
-            getBackground().drawImage(lose, 315, 75);
+            getBackground().drawImage(lose, 315, 80);
         }
-        getBackground().drawImage(pDisplay, 320, 575);
+        getBackground().drawImage(pDisplay, 325, 525);
+        getBackground().drawImage(new GreenfootImage("goBackImage.png"), 150, 600);
     }
     
     public void act() {

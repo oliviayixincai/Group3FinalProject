@@ -6,6 +6,9 @@ import java.util.*;
  * 
  * @author Yixin Cai
  * @version 2023-01-22
+ * 
+ * Pointing Finger by Dave Gandy
+ * <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Dave Gandy - Flaticon</a>
  */
 public class MainWorld extends World
 {
@@ -16,6 +19,8 @@ public class MainWorld extends World
     private Button playPixelArtButton;
     private Button playMemoryButton;
     private Button playChessButton;
+    private Button resultButton;
+    private Flashing_Text pointingFinger;
     
     private Map<String, Stat> statMap;
     
@@ -45,6 +50,9 @@ public class MainWorld extends World
         addObject(playMemoryButton, 130, 195);
         this.playChessButton = new Button("buttonChessGame.png");
         addObject(playChessButton, 160, 95);
+        this.resultButton = new Button("buttonResult.png");
+        this.pointingFinger = new Flashing_Text(new GreenfootImage("pointingFinger.png"));
+        addObject(pointingFinger, 320, 150);
         
         Stat iqStat = new Stat(0);
         Stat eqStat = new Stat(0);
@@ -71,19 +79,21 @@ public class MainWorld extends World
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
             if(playArtGame && playMazeGame && playMemoryGame){
-                this.tik++;
+                if (this.resultButton.getWorld() == null) {
+                    addObject(this.resultButton, 800, 600);
+                }
+                else if (Greenfoot.mouseClicked(this.resultButton)) {
+                    this.resultButton.playSound();
+                    int[] stats = {
+                        this.statMap.get("IQ").getValue(),
+                        this.statMap.get("EQ").getValue(),
+                        this.statMap.get("Memory").getValue(),
+                        this.statMap.get("Creativity").getValue()
+                    };
+                    End_World ew = new End_World(stats);
+                    Greenfoot.setWorld(ew);
+                }
             }
-            if (this.tik > 150) {
-                int[] stats = {
-                    this.statMap.get("IQ").getValue(),
-                    this.statMap.get("EQ").getValue(),
-                    this.statMap.get("Memory").getValue(),
-                    this.statMap.get("Creativity").getValue()
-                };
-                End_World ew = new End_World(stats);
-                Greenfoot.setWorld(ew);
-            }
-            //return;
         }
         
         if (Greenfoot.mouseClicked(this.scheduleButton)) {

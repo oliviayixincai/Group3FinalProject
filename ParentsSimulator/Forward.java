@@ -27,7 +27,7 @@ public class Forward extends Arrow
             flipPage();
         }
         if(Greenfoot.mouseClicked(this)&&index==4){
-            Greenfoot.setWorld(new MainWorld());
+            Greenfoot.setWorld(new Tutorial_World());
         }
     }
 }
