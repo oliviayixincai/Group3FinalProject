@@ -29,6 +29,9 @@ public class End_World extends World
     private Color transparent;
     private int count;
     private GreenfootImage intro;
+    
+    private Button replayButton;
+    
     /**
      * Constructor for objects of class End_World. Get the user info and store the stats in the 
      * instance variables
@@ -47,7 +50,7 @@ public class End_World extends World
         Arrays.sort(stats_values);
         
         endText=new Flashing_Text(new GreenfootImage("endInstruction.png"));
-        addObject(endText, 512, 630);
+        
         if (UserInfo.isStorageAvailable()) { // check if connected
             user = UserInfo.getMyInfo();
         }
@@ -55,6 +58,10 @@ public class End_World extends World
             highScore = user.getScore();
             bestJob = user.getString(1);
         } 
+        
+        this.replayButton = new Button("buttonReplay.png");
+        
+        Constants.backgroundSound.playLoop();
     }
     
     public void act(){
@@ -63,10 +70,20 @@ public class End_World extends World
             find_job();
             display=true;
         }
-        if((Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(endText))&&showBoard==false){
+        if((Greenfoot.mouseClicked(this)||Greenfoot.mouseClicked(endText))&&showBoard==false&&count>300){
             endGame();
         }
         count++;
+        if(count == 300) {
+            addObject(endText, 512, 630);
+            setBackground(new GreenfootImage(job+".png"));
+            //setBackground(new GreenfootImage(job+"Desc.png"));
+        }
+        
+        if (Greenfoot.mouseClicked(this.replayButton)) {
+            Title_World tw = new Title_World();
+            Greenfoot.setWorld(tw);
+        }
     }
     
     /**
@@ -96,59 +113,23 @@ public class End_World extends World
         GreenfootImage text3 = new GreenfootImage("You must be a very proud parent :)", 60, Color.BLACK, transparent);
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("EQ")||second.equals("EQ"))){
             job="doctor";
-            setBackground(new GreenfootImage(job+"Intro.png"));
-            if(count > 600) {
-                setBackground(new GreenfootImage(job+".png"));
-                setBackground(new GreenfootImage(job+"Desc.png"));
-            }
-            /*
-            text1 = new GreenfootImage("After high school, \nyour child applied to medical school \nand worked hard to help others as a", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("doctor!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 100);
-            getBackground().drawImage(text2, 275, 275);
-            */
         }
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="programmer";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child improved their computer skills \nand was hired as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("programmer!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 60, 125);
-            getBackground().drawImage(text2, 85, 275);
         }
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("Memory")||second.equals("Memory"))){
             job="lawyer";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child studied hard for a law degree \nand passed the exam to become a", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("lawyer!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 75, 100);
-            getBackground().drawImage(text2, 275, 275);
         }
         if((first.equals("EQ")||second.equals("EQ"))&&(first.equals("Memory")||second.equals("Memory"))){
             job="teacher";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child fulfilled their dream of \nhelping teach others as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("teacher!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 150, 115);
-            getBackground().drawImage(text2, 255, 300);
         }
         if((first.equals("EQ")||second.equals("EQ"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="artist";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child went on to fill displays and\nexhibits for their work as a ", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("artist!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 100);
-            getBackground().drawImage(text2, 300, 275);
         }
         if((first.equals("Memory")||second.equals("Memory"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="actor";
-            setBackground(new GreenfootImage(job+".png"));
-            text1 = new GreenfootImage("After high school, \nyour child practiced their acting skills \nand moved to Hollywood to be an", 50, Color.BLACK, transparent);
-            text2 = new GreenfootImage("actor!", 150, Color.BLACK, transparent);
-            getBackground().drawImage(text1, 100, 125);
-            getBackground().drawImage(text2, 325, 300);
         }
-        getBackground().drawImage(text3, 75, 500);
+        setBackground(new GreenfootImage(job+"Intro.png"));
     }
     
     /**
@@ -176,5 +157,23 @@ public class End_World extends World
         showBoard=true;
         user.store();
         
+        addObject(this.replayButton, 800, 600);
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.backgroundSound.pause();
     }
 }

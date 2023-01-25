@@ -1,15 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Piece here.
+ * Spawns a visual chessboard in black/white squares
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version final
  */
 public class Square extends Actor
 {
     private GreenfootImage square;
     
+    /**
+     * Constructor for the chessboard squares
+     * 
+     * @param color the color of the square
+     */
     public Square(String color) {
         //GreenfootImage square = new GreenfootImage(75, 75);
         if(color.equals("W")) {

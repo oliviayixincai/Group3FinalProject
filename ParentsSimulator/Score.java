@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Score here.
+ * Displays the points that will be won in Chess game if completed at that point
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version final
  */
 public class Score extends LabelAbstract
 {

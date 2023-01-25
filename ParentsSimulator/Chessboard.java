@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * Write a description of class Chessboard here.
+ * Chessboard is the world for the chess maze minigame. It will spot
  * 
  * @Fiona Ho 
- * @version (a version number or a date)
+ * @version final
  */
 public class Chessboard extends World {
     private GreenfootImage backboard, statsboard;
