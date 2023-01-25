@@ -7,8 +7,9 @@ import java.util.Collections;
  * picture. If the 2 cards have different pictures, the cards will be flipped back. If the 2 cards have same pictures, the cards will 
  * be removed. The player's goal is to remove all pairs. 
  * 
- * @Yuxin Li (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @version Jan 2023
+ * 
  * Animal pictures by Naomi Lord
  * 
  * card cover from:

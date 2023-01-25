@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Timer here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @version Jan 2023
  */
 public class Timer extends LabelAbstract
 {
@@ -12,6 +12,9 @@ public class Timer extends LabelAbstract
         this.value = value;
     }
     
+    /**
+     * update timer
+     */
     public void updateImage() {
         GreenfootImage d = new GreenfootImage("Time Left: \n" + getValue(), 40, border, transparent);
         setImage(d);

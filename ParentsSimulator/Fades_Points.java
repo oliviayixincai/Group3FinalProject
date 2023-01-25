@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Fades_Points here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Yuxin Li  
+ * @version Jan 2023
  */
 public class Fades_Points extends Flashing_Text
 {
@@ -25,6 +25,10 @@ public class Fades_Points extends Flashing_Text
             getWorld().removeObject(this);
         }
     }
+    
+    /**
+     * the transparency decreases
+     */
     public void add_points_effect(){
         getImage().setTransparency(getImage().getTransparency()-5);
     }

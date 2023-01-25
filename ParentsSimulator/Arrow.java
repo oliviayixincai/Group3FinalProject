@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arrow here.
+ * Arrow is a class the players can click to flip page
  * 
- * @Yuxin  (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @version Jan 2023
  */
 public abstract class Arrow extends Actor
 {
@@ -24,11 +24,18 @@ public abstract class Arrow extends Actor
     };
     private int soundNum;
     private int soundIndex;
+    
+    /**
+     * constructor for arrow
+     */
     public Arrow(){
         this.soundNum = sounds.length;
         this.soundIndex = 0;
     }
     
+    /**
+     * the method can be called to flip page
+     */
     public void flipPage(){
         storyWorld.setStory();
     }

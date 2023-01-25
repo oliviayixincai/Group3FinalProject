@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Time_Label here.
+ * Abstract class that groups together the common traits and methods for 
+ * the displayers
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
