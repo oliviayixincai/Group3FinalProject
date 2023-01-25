@@ -14,7 +14,7 @@ public class End_World extends World
     private int highScore;
     private String bestJob;
     private int score;
-    private boolean showBoard=false;
+    private boolean showBoard;
     
     private Map<String, Integer> stat_bars=new HashMap<String, Integer>();
     private int[] stats_values; 
@@ -25,6 +25,8 @@ public class End_World extends World
     
     private GreenfootImage text1, text2, text3;
     private Color transparent;
+    private int count;
+    private GreenfootImage intro;
     /**
      * Constructor for objects of class End_World.
      * 
@@ -40,6 +42,7 @@ public class End_World extends World
         stat_bars.put("Creativity", stats[3]);
         stats_values=stats;
         Arrays.sort(stats_values);
+        
         if (UserInfo.isStorageAvailable()) { // check if connected
             user = UserInfo.getMyInfo();
         }
@@ -62,6 +65,7 @@ public class End_World extends World
         if(Greenfoot.mouseClicked(this)){
             endGame();
         }
+        count++;
     }
     
     public void findMax(){
@@ -85,11 +89,17 @@ public class End_World extends World
         GreenfootImage text3 = new GreenfootImage("You must be a very proud parent :)", 60, Color.BLACK, transparent);
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("EQ")||second.equals("EQ"))){
             job="doctor";
-            setBackground(new GreenfootImage(job+".png"));
+            setBackground(new GreenfootImage(job+"Intro.png"));
+            if(count > 600) {
+                setBackground(new GreenfootImage(job+".png"));
+                setBackground(new GreenfootImage(job+"Desc.png"));
+            }
+            /*
             text1 = new GreenfootImage("After high school, \nyour child applied to medical school \nand worked hard to help others as a", 50, Color.BLACK, transparent);
             text2 = new GreenfootImage("doctor!", 150, Color.BLACK, transparent);
             getBackground().drawImage(text1, 100, 100);
             getBackground().drawImage(text2, 275, 275);
+            */
         }
         if((first.equals("IQ")||second.equals("IQ"))&&(first.equals("Creativity")||second.equals("Creativity"))){
             job="programmer";

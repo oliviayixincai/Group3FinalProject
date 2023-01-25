@@ -16,6 +16,7 @@ public class Player extends Piece
     private int dY, dX;
     private Wall wall;
     private int count;
+    private int half;
     
     public Player() {
         /*
@@ -25,11 +26,6 @@ public class Player extends Piece
         */
         pic = new GreenfootImage("wKing.png");
         setImage(pic);
-        
-        
-        //blocked = false;
-        //c = w.getChess();
-        //p = w.getPlayer();
     }
     
     public void addedToWorld(World w){
@@ -39,7 +35,6 @@ public class Player extends Piece
     
     public void getValues() {
         ss = w.getSquareSize();
-        //System.out.println("ss is " + ss);
         xOff = w.getxOffset();
         yOff = w.getyOffset();
     }
@@ -71,7 +66,30 @@ public class Player extends Piece
     public boolean canMove() {
         int x = getX();
         int y = getY();
-        
+        /*
+        half = pic.getWidth()/4;
+        if(x < xOff-20) {
+            x += half;
+            dX = 0;
+            dY = 0;
+        }
+        if(x >= 7*ss+xOff+20) {
+            x -= half;
+            dX = 0;
+            dY = 0;
+        }
+        if(y < yOff-20) {
+            y += half;
+            dX = 0;
+            dY = 0;
+        }
+        if(y >= 7*ss+yOff+20) {
+            y -= half;
+            dX = 0;
+            dY = 0;
+        }
+        setLocation(x,y);
+        */
         if(x < xOff-20 || x >= 7*ss+xOff+20 || y < yOff-20 || y >= 7*ss+yOff+20) {
             //System.out.println("Blocked by edge");
             //return false;
@@ -80,15 +98,11 @@ public class Player extends Piece
             dY = 0;
             w.respawn();
         }
-        //blocked = checkWall();
-        //return !blocked;
         return true;
     }
     
     public void move() {
-        //System.out.println("in move()");
-        int half = pic.getWidth()/2;
-        //int half = ss/2;
+        half = pic.getWidth()/2;
         
         // move right
         if(dX > 0) {
@@ -145,14 +159,4 @@ public class Player extends Piece
         // apply v move
         setLocation(getX(), getY() + dY);
     }
-    
-    /*
-    public boolean checkWall() {
-        if(isTouching(Wall.class)) {
-            System.out.println("Blocked by Wall");
-            return(true);
-        }
-        return false;
-    }
-    */
 }
