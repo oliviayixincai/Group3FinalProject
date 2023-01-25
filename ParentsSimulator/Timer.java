@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Displays the time left over in Chess game
  * 
- * @Fiona Ho
+ * @Yuxin Li and Fiona Ho
  * @version final
  */
 public class Timer extends LabelAbstract
