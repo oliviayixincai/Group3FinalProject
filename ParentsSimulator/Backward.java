@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Backward here.
+ * Flip the story back a page
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li
+ * @version Jan 2023
  */
 public class Backward extends Arrow
 {

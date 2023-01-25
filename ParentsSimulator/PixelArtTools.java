@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class PixelArtTools here.
+ * Class that holds all of the pixel art actors.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gloria Chan
+ * @version January 19, 2023
  */
 public class PixelArtTools extends Actor
 {

@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * of the game. Players can click the button to flip pages.
  * 
  * @Yuxin Li 
- * @version (a version number or a date)
+ * @version Jan 2023
  * 
  * get married picture by RapidEye
  * https://www.istockphoto.com/photo/male-and-female-hands-clasped-gm931136214-255235764
@@ -64,6 +64,8 @@ public class Story_World extends World
         forward=new Forward(this);
         addObject(forward, 920, 610);
         backward=new Backward(this);
+        
+        Constants.backgroundSound.playLoop();
     }
     
     public void act(){

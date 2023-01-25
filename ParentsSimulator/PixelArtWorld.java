@@ -4,21 +4,25 @@ import java.util.ArrayList;
 /**
  * This program runs the pixel art minigame.
  * 
+ * CREDIT: Jordan Cohen for returnTimeInSeconds() method (found in Timer class).
+ * 
  * @author Gloria Chan
- * @version !! DATE !!
+ * @version January 18, 2023
  */
 public class PixelArtWorld extends World
 {
     // Sets up timer and time tracking
-    private int maxTime = 60;
-    private int actTimes;
+    private long startTime;
+    private long endTime;
+    private int maxTime = 75;
     private int secondsElapsed;
-    private int points;
-    //private TimeDisplayer timer = new TimeDisplayer(maxTime);
-    private PointDisplayer pointDisplay = new PointDisplayer(0);
-    private Timer timer;
+    private TimeDisplayer timer = new TimeDisplayer(75, 35);
     
-    private int type = Greenfoot.getRandomNumber(2);
+    // Sets up point tracking
+    private int points;
+    private PointDisplayer pointDisplay = new PointDisplayer(0);
+    
+    // Randomizes pixel art
     private GreenfootImage background = new GreenfootImage("pixelArtBG.png");
     private MainWorld main;
     
@@ -37,13 +41,13 @@ public class PixelArtWorld extends World
     private static Color lightPink = new Color (255, 205, 210); //ffcdd2
     
     private boolean finished; // Checks if  drawing is coloured in correctly.
-    private boolean tempForColourable;
     
     private Color selectedCol;
     
     private int[][] pixelArtGrid = new int [14][14];
     private Color[] colours = new Color [6];
     
+    // Draws out a cow
     private int[][] pixelArtGrid0 = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -87,14 +91,9 @@ public class PixelArtWorld extends World
         lightBlue, yellow, darkYellow, peach, darkestYellow, black, lightPink
     };
     
-    
-    /** Type 1 = Cow; type 2 = Cat; type 3 = giraffe;
-    private int type = Greenfoot.getRandomNumber(3);
-    This can be randomized in the World that generates minigames.
-    **/
-    
     /**
-     * Constructor for objects of class MyWorld.
+     * Starts timer to track user play time and generates a random pixel art for the user
+     * to complete. Initalizes the pixel art grid and the colour bars.
      * 
      */
     public PixelArtWorld(MainWorld mainWorld)
@@ -102,18 +101,14 @@ public class PixelArtWorld extends World
         // Create a world with 1000x700 cells with a cell size of 1x1 pixels.
         super(1000, 700, 1);
         main = mainWorld;
-        
-        // add timer
-        timer = new Timer(75);
-        startTimer();
-        
-        addObject(timer, 215, 40);
-        
-        actTimes = 0;
+        addObject(timer, 200, 85);
+
+        startTime = System.nanoTime();
         secondsElapsed = 0;
         points = 0;
         setBackground(background);
         
+        int type = Greenfoot.getRandomNumber(2);
         finished = false;
         // Integer that randomizes the minigame's art.
         // 0 = Cow; 1 = Cat
@@ -135,62 +130,49 @@ public class PixelArtWorld extends World
         makeGrid(525,525); // 40 x 40 cells in the grid
         addColors();
         makeColourBar(7);
-        
+
         Constants.pixelSound.playLoop();
     }
 
     public void act()
     {
         changeColours();
+        endTime = System.nanoTime();
         
-        // Counts down timer in seconds.
-        /*
-        if (actTimes % 60 == 0)
-        {
-            secondsElapsed++;
-            timer.setDisplayer(maxTime - secondsElapsed);
-        }
-        */
+        secondsElapsed = returnTimeInSeconds();
+        timer.setDisplayer(maxTime - secondsElapsed);
         
-        if(75-getTimeInSeconds()>0){
-            endTimer();
-            timer.setDisplayer(75-getTimeInSeconds());
-        }
-        if(getTimeInSeconds()>=75) {
-            Greenfoot.setWorld(new WinScreen(points, getTimeInSeconds(), false, main));
-        }
-        
-        // not sure how you have points set up, but if you want to show it on the screen I also use the Score class for that (can see it in Chessboard act())
         finished = returnCompletion();
         if (finished)
         {
-            if (secondsElapsed <= 35) // Less than or equal to 60 s to complete = 
+            if (secondsElapsed <= 60) // Less than or equal to 60 s to complete = Win + 12 pts
             {
                 points = 12;
                 Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
             }
-            else if (secondsElapsed >= 36 && secondsElapsed <= 45)
+            else if (secondsElapsed >= 61 && secondsElapsed <= 70) // 61 s to 70 s to complete = Win + 6 pts
             {
                 points = 6;
                 Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
             }
-            else
+            else // More than 70 s to complete = 2 points
             {
                 points = 2;
                 Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, true, main, "EQ", "Creativity"));
             }
         }
         
-        if (!finished && secondsElapsed == maxTime)
+        if (!finished && secondsElapsed == maxTime) // Didn't complete the pixel art in time = Lose
         {
             points = 0;
             Greenfoot.setWorld(new Game_Result_World(points, secondsElapsed, false, main, "EQ", "Creativity"));
         }
-        actTimes++;
     }
     
-    // Makes a numbered grid (2D array) with numbers that the player must fill in.
-    // Each grid is filled with different values (depending on the art).
+    /**
+     * Method that makes a numbered grid (2D array) with numbers that the player must fill in.
+     * Each grid is filled with different values (depending on the art).
+     */
     private void makeGrid(int length, int height)
     {
         int p = length / 15; // Dimensions of each cell in the grid.
@@ -210,11 +192,14 @@ public class PixelArtWorld extends World
         }
     }
     
+    /**
+     * Method that adds boxes to represent the colours of the pixel art (its corresponding number is also displayed).
+     */
     private void makeColourBar(int numColours)
     {
         for (int i = 0; i < numColours; i++)
         {
-            ColorBar bar = new ColorBar(32, colours[i], i + 1);
+            ColorDisplay bar = new ColorDisplay(32, colours[i], i + 1);
             int x;
             int y;
             if (i % 2 == 0)
@@ -231,8 +216,9 @@ public class PixelArtWorld extends World
             }
         }
     }
-    
-    // Generates bar full of the colours that the player must choose from to colour in the pixel art.
+    /**
+     * Method that adds boxes with no colour to the grid (players must click on these to colour them in). 
+     */
     private void addColors()
     {
         // Adds in Color Actors.
@@ -248,6 +234,9 @@ public class PixelArtWorld extends World
         }
     }
     
+    /**
+     * Method that allows users to change their painting colour by pressing on specific number keys.
+     */
     private void changeColours()
     {
         if(Greenfoot.isKeyDown("1")){
@@ -276,16 +265,25 @@ public class PixelArtWorld extends World
         }
     }
     
-    private Color[] returnColourList()
-    {
-        return colours;
-    }
-    
+    /**
+     * Method that returns the colour that the player has selected to paint with.
+     */
     public Color returnColour()
     {
         return selectedCol;
     }
     
+    /**
+     * Method that returns the time in seconds.
+     */
+    private int returnTimeInSeconds()
+    {
+       return (int)((double)(endTime - startTime) / 1000000000.0); 
+    }
+    
+    /**
+     * Methodd that checks to see whether the user is completed the pixel art correctly or not.
+     */
     private boolean returnCompletion()
     {
         ArrayList <ColorBlock> cbArray = (ArrayList <ColorBlock>) getObjects(ColorBlock.class);
@@ -294,6 +292,7 @@ public class PixelArtWorld extends World
             for (ColorBlock cb : cbArray)
             {
                 // If colourable is true, finished is false. 
+                // That means that there is still a block that needs to be coloured in.
                 if (cb.checkColour()){
                     finished = false;
                     return false;
@@ -303,7 +302,7 @@ public class PixelArtWorld extends World
         }
         return finished;
     }
-    
+
     /**
      * This method is called by the Greenfoot system when the execution has started.
      * Play background sound in loop once the execution has started.
@@ -319,111 +318,5 @@ public class PixelArtWorld extends World
      */
     public void stopped() {
         Constants.pixelSound.pause();
-    }
-    
-    // mr cohen's timer class
-    /**
-     * A very simply Timer class that functions as a virtual stopwatch.
-     * 
-     * This can be used as a semi-accurate method of measuring the elapsed time
-     * while some code is running. It can be used as a timer in a game, or to
-     * track the efficiency of some procedure. Methods for stop, start and reset
-     * allow easy control of Timer objects. Methods are included that return 
-     * seconds (as an int), milliseconds (as a float) or a formatted String.
-     * 
-     * @author Jordan Cohen
-     * @version v1.0.2
-     */
-    private long startTime;
-    private long endTime;
-
-    /**
-     * Start the Timer
-     */
-    public void startTimer()
-    {
-        startTime = System.nanoTime();
-    }
-
-    /**
-     * Stop the Timer
-     */
-    public void endTimer ()
-    {
-        endTime = System.nanoTime();
-    }
-
-    /**
-     * Reset the Timer
-     */
-    public void resetTimer ()
-    {
-        startTime = 0;
-        endTime = 0;
-    }
-
-    /**
-     * Returns elapsed time as a neatly formatted String. Most practical for
-     * applications where output (rather than calculation) is the goal. The
-     * exact format will depend on the time elapsed - either ms, sec, or min:sec.
-     * 
-     * @return String   neatly formatted display of time elapsed
-     */
-    public String getTimeString ()
-    {
-        if ((endTime - startTime) < 1000000)
-        {
-            return (endTime - startTime) + "ns";
-        }
-        // Less than 1 second
-        if ((endTime - startTime)/1000000000 < 1)
-        {
-            return getTimeInMilliseconds() + " ms";
-        }
-        else if ((endTime - startTime)/1000000000 < 60)
-        {
-            return getTimeInPreciseSeconds() + " sec";
-        }
-        
-        int minutes = getTimeInSeconds() / 60;
-        float seconds = getTimeInPreciseSeconds() - ((float)minutes * 60);
-        return minutes + " min " + seconds + " sec";
-    }
-    
-    /**
-     * Return the elapsed time in seconds. This assumes that the timer has already
-     * been started and stopped (but not reset). For very short durations, this will
-     * return zero even though some time has elapsed.
-     * 
-     * @return int  The number of seconds elapsed, as an int.
-     */
-    public int getTimeInSeconds ()
-    {
-        return (int)((double)(endTime - startTime) / 1000000000.0);
-    }
-    
-    /**
-     * Return the elapsed time in seconds. This assumes that the timer has already
-     * been started and stopped (but not reset). For very short durations, this will
-     * return zero even though some time has elapsed.
-     * 
-     * @return float  The number of seconds elapsed, as an int.
-     */
-    public float getTimeInPreciseSeconds ()
-    {
-        return (float)((double)(endTime - startTime) / 1000000000.0);
-    }
-
-    /**
-     * Return the elapsed time in seconds. This assumes that the timer has already
-     * been started and stopped (but not reset). This will return the value as a 
-     * float and is most useful for shorter durations where second is not accurate
-     * enough.
-     * 
-     * @return float  The number of milliseconds elapsed, as a float.
-     */
-    public float getTimeInMilliseconds ()
-    {
-        return (float)((double)(endTime - startTime) / 1000000.0);
     }
 }

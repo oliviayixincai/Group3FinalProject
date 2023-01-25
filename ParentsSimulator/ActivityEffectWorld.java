@@ -3,12 +3,13 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 /**
- * Write a description of class ActivityWorld here.
+ * It is a world to show the activities effects.
  * 
  * @author Yixin Cai
  * @version 2023-01-21
  */
 public class ActivityEffectWorld extends AbstractWorld {
+    // declare the variables and objects
     private Queue<Activity> activityQueue;
     private FadeEffect effect;
     private int[] pointsSum;
@@ -18,25 +19,35 @@ public class ActivityEffectWorld extends AbstractWorld {
 
     /**
      * Constructor for objects of class ActivityWorld.
-     * 
+     * @param mainWorld It is a MainWorld
+     * @param scheduleTable It is a ScheduleItem[][] used to store the activities.
      */
     public ActivityEffectWorld(MainWorld mainWorld, ScheduleItem[][] scheduleTable) {
         super(mainWorld);
-        
+        // initialize the variables and objects
+        // Use the feature of Queue, which is "first in, first out"
         this.activityQueue = toActivityQueue(scheduleTable);
         this.pointsSum = new int[] {0,0,0,0};
         this.randomChoiceIndex = 0;
         
-        this.background = getBackground();
+        background = new GreenfootImage("activityBG.png");
+        setBackground(background);
     }
     
+    /**
+     * Act - do whatever the ActivityEffectWorld wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
+        // do nothing here if it is in random choice section
         if (this.inRandomChoice) {
             return;
         }
 
+        // this condition can make sure the previous activity is done
         if (effect == null || effect.getWorld() == null) {
             int size = activityQueue.size();
+            // this is to determine weather it should move on the the random choice section
             if (this.randomChoiceIndex < 2 && this.randomChoiceIndex * 4 == 8 - size) {
                 startRandomChoice(this.randomChoiceIndex);
                 this.randomChoiceIndex++;
@@ -47,20 +58,32 @@ public class ActivityEffectWorld extends AbstractWorld {
         }
     }
     
+    /**
+     * This is a method used to play the next activity effect
+     */
     private void playNextEffect() {
+        // first in, first out
         Activity activity = activityQueue.poll();
         if (activity == null) {
             finishWorld();
         }
         else {
             updatePoints(activity.getPoints());
-            effect = new FadeEffect(new GreenfootImage("activity" + activity.getName() + "Icon.png"));
-            addObject(effect, getWidth() / 2, getHeight() / 2);
+            GreenfootImage activityEnlarged = new GreenfootImage("activity" + activity.getName() + "Icon.png");
+            activityEnlarged.scale(420,360);
+            effect = new FadeEffect(new GreenfootImage(activityEnlarged));
+            addObject(effect, getWidth() / 2 + 30, getHeight() / 2 + 50);
         }
     }
     
+    /**
+     * This is a method used to start the random choice section.
+     * @param questionNumber this is a int to indicate the index
+     * of questions, answers and the results.
+     */
     private void startRandomChoice(int questionNumber) {
         int stage = this.mainWorld.getStage();
+        // the index used here to make sure the question, answers and result are matched.
         String question = Constants.randomChoiceQuestions[stage][questionNumber];
         String[] answers = Constants.randomChoiceAnswers[stage][questionNumber];
         int[][] results = Constants.randomChoiceResults[stage][questionNumber];
@@ -79,6 +102,12 @@ public class ActivityEffectWorld extends AbstractWorld {
         this.inRandomChoice = true;
     }
     
+    /**
+     * This is a method to end the randome choice section.
+     * It can update the points, which is the results of the questions
+     * , remove it self after and set background.
+     * @param results It is an int[] used to store the points that need to be updated
+     */
     public void finishRandomChoice(int[] results) {
         updatePoints(results);
         removeObjects(getObjects(RandomChoice.class));
@@ -86,12 +115,22 @@ public class ActivityEffectWorld extends AbstractWorld {
         this.inRandomChoice = false;
     }
     
+    /**
+     *  This is a method to update the points based on the result.
+     *  @param points It is an int[] to store the points need to be updated
+     */
     private void updatePoints(int[] points) {
         for (int i = 0; i < points.length; i++) {
             pointsSum[i] += points[i];
         }
     }
     
+    /**
+     * This is a method to store all of the activities that 
+     * player choose into a Queue and return the Queue.
+     * @param scheduleTable This is a ScheduleItem[][] that stores al of the activities
+     * @return Queue<Activity> the Queue stored all the activities.
+     */
     private Queue<Activity> toActivityQueue(ScheduleItem[][] scheduleTable) {
         Queue<Activity> queue = new LinkedList<Activity>();
         
@@ -107,6 +146,9 @@ public class ActivityEffectWorld extends AbstractWorld {
         return queue;
     }
 
+    /**
+     * This is a method to add the calculated points and go back to the main World
+     */
     private void finishWorld() {
         this.mainWorld.addPoint("IQ", pointsSum[0]);
         this.mainWorld.addPoint("EQ", pointsSum[1]);

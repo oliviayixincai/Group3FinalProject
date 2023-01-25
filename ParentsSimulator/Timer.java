@@ -12,6 +12,9 @@ public class Timer extends LabelAbstract
         this.value = value;
     }
     
+    /**
+     * update timer
+     */
     public void updateImage() {
         GreenfootImage d = new GreenfootImage("Time Left: \n" + getValue(), 40, border, transparent);
         setImage(d);
