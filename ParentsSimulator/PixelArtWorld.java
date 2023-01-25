@@ -199,7 +199,7 @@ public class PixelArtWorld extends World
     {
         for (int i = 0; i < numColours; i++)
         {
-            ColorBar bar = new ColorBar(32, colours[i], i + 1);
+            ColorDisplay bar = new ColorDisplay(32, colours[i], i + 1);
             int x;
             int y;
             if (i % 2 == 0)
