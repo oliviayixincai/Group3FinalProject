@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Introduction world to the flip card memory game, tell the player to click and start the game
  * 
- * @Yuxin Li (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @version Jan 2023 
  * 
  * backgroundImage by Siti Fatona
  * <a href="https://www.vecteezy.com/free-vector/cute-background">Cute Background Vectors by Vecteezy</a>

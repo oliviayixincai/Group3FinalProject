@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The result world shows player whether they are successful in finishing the game or not. Tells the player how many points they earn
  * 
  * @Yuxin Li (your name) 
- * @version (a version number or a date)
+ * @version Jan 2023(a version number or a date)
  */
 public class Game_Result_World extends World
 {
