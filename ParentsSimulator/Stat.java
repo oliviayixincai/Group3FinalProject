@@ -23,17 +23,28 @@ public class Stat extends LabelAbstract
         this.name = name;
     }
     
+    /**
+     * update the stats value
+     */
     public void updateImage(){
         GreenfootImage display = new GreenfootImage("" + getValue(), 40, Color.GRAY, transparent);
         setImage(display);
     }
     
+    /**
+     * set the stats value
+     * @param new stats value
+     */
     public void setStat(int newValue)
     {
         value = newValue;
         updateImage();
     }
     
+    /**
+     * add points and effect to the stats
+     * @param point added points
+     */
     public void addPoint(int point)
     {
         point = Math.max(point, -this.value);

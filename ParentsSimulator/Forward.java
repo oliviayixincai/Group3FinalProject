@@ -1,9 +1,9 @@
 import greenfoot.*; 
 /**
- * Write a description of class Forward here.
+ * Flip the page forward
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Yuxin Li 
+ * @version Jan 2023
  */
 public class Forward extends Arrow
 {
@@ -11,7 +11,6 @@ public class Forward extends Arrow
      * Act - do whatever the Forward wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
     public Forward(Story_World sw){
         GreenfootImage forwardArrow = new GreenfootImage("forward.png");
         setImage(forwardArrow);

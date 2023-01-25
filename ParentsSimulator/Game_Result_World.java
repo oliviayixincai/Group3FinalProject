@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The result world shows player whether they are successful in finishing the game or not. Tells the player how many points they earn
  * 
  * @Yuxin Li (your name) 
- * @version (a version number or a date)
+ * @version Jan 2023(a version number or a date)
  */
 public class Game_Result_World extends World
 {
@@ -26,6 +26,8 @@ public class Game_Result_World extends World
      * @param time_taken time used in the game
      * @param success whether the player remove all cards or not
      * @param mainWorld the main player world that the player will go back to after the game
+     * @param stat1 the first stat that game will contribute to
+     * @param stat2 the second stat that the game will contribute to
      */
     public Game_Result_World(int points, int time_taken, boolean success, MainWorld mainWorld, String stat1, String stat2)
     {    

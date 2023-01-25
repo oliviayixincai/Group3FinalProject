@@ -1,11 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class card here.
+ * Card has different images and names that can be flipped and removed by
+ * finding matching cards
  * 
- * @author (your name) 
- * @version (a version number or a date)
- * question mark: https://www.pinterest.com/pin/267542034093060703/
+ * @Yuxin Li  
+ * @version Jan 2023
  */
 public class Card extends Actor
 {
@@ -36,6 +36,9 @@ public class Card extends Actor
     private int soundNum;
     private int soundIndex;
     
+    /**
+     * each card will have a cover, the card will show its picture if clicked
+     */
     public Card(String name){
         setImage(cover);
         animal=new GreenfootImage(name+".png");
@@ -66,27 +69,63 @@ public class Card extends Actor
             playSound();
         }
     }
+    
+    /**
+     * show the name of the card
+     * @return String the card name
+     */
     public String getName(){
         return this.name;
     }
+    
+    /**
+     * Flip the card back by adding the cover
+     */
     public void flipBack(){
         setImage(cover);
     }
+    
+    /**
+     * get how many cards are flipped 
+     * @return int the number of flipped cards
+     */
     public static int getUpNumber(){
         return upNumber;
     }
+    
+    /**
+     * set upNumber to 0
+     */
     public static void setUpNumber(){
         upNumber=0;
     }
+    
+    /**
+     * get the first card being flipped
+     * @return Card the first card being flipped
+     */
     public static Card getFirst(){
         return first;
     }
+    
+    /**
+     * set the first card to null
+     */
     public static void setFirst(){
         first=null;
     }
+    
+    /**
+     * get the second card being flipped
+     * @return Card the second card being flipped
+     */
     public static Card getSecond(){
         return second;
     }
+    
+    /**
+     * set the second card to null
+     */    
     public static void setSecond(){
         second=null;
     }

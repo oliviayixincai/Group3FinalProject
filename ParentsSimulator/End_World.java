@@ -152,7 +152,8 @@ public class End_World extends World
     }
     
     /**
-     * calculate the user info and compare the new result and the history result, show the user result board
+     * calculate the user info and compare the new result and the history result.
+     * show the user result board
      */
     private void endGame() {
         // calculate score by adding up all stats
