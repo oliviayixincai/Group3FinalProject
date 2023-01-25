@@ -19,6 +19,7 @@ public class MainWorld extends World
     private Button playPixelArtButton;
     private Button playMemoryButton;
     private Button playChessButton;
+    private Button resultButton;
     private Flashing_Text pointingFinger;
     
     private Map<String, Stat> statMap;
@@ -49,6 +50,7 @@ public class MainWorld extends World
         addObject(playMemoryButton, 130, 195);
         this.playChessButton = new Button("buttonChessGame.png");
         addObject(playChessButton, 160, 95);
+        this.resultButton = new Button("buttonResult.png");
         this.pointingFinger = new Flashing_Text(new GreenfootImage("pointingFinger.png"));
         addObject(pointingFinger, 320, 150);
         
@@ -76,17 +78,22 @@ public class MainWorld extends World
         // Game about to finish
         if (this.stage > 2) {
             removeObject(this.scheduleButton);
-            if(playArtGame && playMazeGame && playMemoryGame && Greenfoot.mouseClicked(this)){
-                int[] stats = {
-                    this.statMap.get("IQ").getValue(),
-                    this.statMap.get("EQ").getValue(),
-                    this.statMap.get("Memory").getValue(),
-                    this.statMap.get("Creativity").getValue()
-                };
-                End_World ew = new End_World(stats);
-                Greenfoot.setWorld(ew);
+            if(playArtGame && playMazeGame && playMemoryGame){
+                if (this.resultButton.getWorld() == null) {
+                    addObject(this.resultButton, 800, 600);
+                }
+                else if (Greenfoot.mouseClicked(this.resultButton)) {
+                    this.resultButton.playSound();
+                    int[] stats = {
+                        this.statMap.get("IQ").getValue(),
+                        this.statMap.get("EQ").getValue(),
+                        this.statMap.get("Memory").getValue(),
+                        this.statMap.get("Creativity").getValue()
+                    };
+                    End_World ew = new End_World(stats);
+                    Greenfoot.setWorld(ew);
+                }
             }
-            //return;
         }
         
         if (Greenfoot.mouseClicked(this.scheduleButton)) {

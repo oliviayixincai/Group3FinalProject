@@ -64,6 +64,8 @@ public class Story_World extends World
         forward=new Forward(this);
         addObject(forward, 920, 610);
         backward=new Backward(this);
+        
+        Constants.backgroundSound.playLoop();
     }
     
     public void act(){

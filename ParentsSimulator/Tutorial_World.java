@@ -34,6 +34,8 @@ public class Tutorial_World extends World
             tutorialPage[i-1]=new GreenfootImage("tutorialPg"+ i +".png");
         }
         setBackground(tutorialPage[pageNumber]);
+        
+        Constants.backgroundSound.playLoop();
     }
     
     public void act()
@@ -48,5 +50,22 @@ public class Tutorial_World extends World
                 Greenfoot.setWorld(new MainWorld());
             }
         }
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.backgroundSound.pause();
     }
 }

@@ -42,7 +42,7 @@ public class WinScreen extends Screens
             getBackground().drawImage(lose, 315, 80);
         }
         getBackground().drawImage(pDisplay, 325, 525);
-        getBackground().drawImage(new GreenfootImage("goBackImage.png"), 275, 600);
+        getBackground().drawImage(new GreenfootImage("goBackImage.png"), 150, 600);
     }
     
     public void act() {

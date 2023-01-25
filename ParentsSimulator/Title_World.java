@@ -26,11 +26,30 @@ public class Title_World extends World
         playButton = new Button(playImage);
         addObject(playButton, 800, 600);
     }
+    
     public void act()
     {
         if (Greenfoot.mouseClicked(playButton))
         {
+            this.playButton.playSound();
             Greenfoot.setWorld(new Story_World());
         }
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Play background sound in loop once the execution has started.
+     */
+    public void started() {
+        Constants.backgroundSound.playLoop();
+    }
+    
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
+    public void stopped() {
+        Constants.backgroundSound.pause();
     }
 }
