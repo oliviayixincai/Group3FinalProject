@@ -4,53 +4,27 @@ import greenfoot.GreenfootSound;
  * This class is a place to store the static or final object and variables, which 
  * can make sure the switch between worlds can be smooth and to protect some values.
  * 
- * backgroundMusic
- * Music by <a href="https://pixabay.com/users/23117649-23117649/?utm_source=link-attributi
- * on&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=7741">23117649</a> from
- * <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_c
- * ampaign=music&amp;utm_content=7741">Pixabay</a>
  * 
  * @author Yixin Cai
- * @version 2023-01-23
+ * @version 2023-01-24
  */
 public class Constants  
 {
+    // the activities names
     public static String[][] activityNames = {
         { "Alphabet", "Speak", "Walk" },
         { "Art", "Math", "Music", "PE", "Science" },
         { "AdvFunc", "Band", "CS", "English", "Business" }
     };
     
+    // the activities points can affect the child's stats
     public static int[][][] activityPoints = {
         { {1,0,1,0}, {0,2,0,0}, {1,0,0,1} },
         { {0,0,1,2}, {3,0,0,0}, {0,2,0,1}, {0,2,0,1}, {1,0,2,0} },
         { {4,0,0,0}, {0,0,2,2}, {1,0,1,2}, {0,2,2,0}, {0,3,0,1} }
     };
     
-    /**
-    public static final GreenfootImage[][] effectImages = {
-        {
-            new GreenfootImage("activityAlphabet.png"),
-            new GreenfootImage("activitySpeak.png"),
-            new GreenfootImage("activityWalk.png")
-        },
-        {
-            new GreenfootImage("activityAlphabet.png"),
-            new GreenfootImage("activitySpeak.png"),
-            new GreenfootImage("activityWalk.png"),
-            new GreenfootImage("activitySpeak.png"),
-            new GreenfootImage("activityWalk.png")
-        },
-        {
-            new GreenfootImage("activityAlphabet.png"),
-            new GreenfootImage("activitySpeak.png"),
-            new GreenfootImage("activityWalk.png"),
-            new GreenfootImage("activitySpeak.png"),
-            new GreenfootImage("activityWalk.png")
-        }
-    };
-    */
-    
+    // the question of each life stage
     public static String[][] randomChoiceQuestions = {
         { 
             "While at a family dinner, your mom points out that Pipo\n is getting too chubby. How do you respond?",
@@ -66,6 +40,7 @@ public class Constants
         }
     };
     
+    // the answers of each question
     public static String[][][] randomChoiceAnswers = {
         {
             { 
@@ -105,6 +80,7 @@ public class Constants
         }
     };
     
+    // The points that each answer can affect to the child's stats
     public static int[][][][] randomChoiceResults = {
         { { {0,1,0,1}, {1,0,1,0}, {0,-1,-1,0} }, { {1,0,0,1}, {0,1,0,1}, {1,0,1,0} } },
         { { {0,2,2,0}, {0,-1,-1,0}, {2,-1,1,0} }, { {0,-2,-1,0}, {1,1,1,0}, {1,1,0,2} } },
@@ -112,8 +88,7 @@ public class Constants
     };
     
     
-    // I know the most recommended format is wav, but its size is too big about 38MB.
-    // Therfore, I use mp3 format to reduce the size to 6 MB.
+    // to make sure the music can play smoothly when the world swtiches.
     public static final GreenfootSound backgroundSound = new GreenfootSound("main.mp3");
     public static final GreenfootSound pixelSound = new GreenfootSound("pixel.mp3");
     public static final GreenfootSound chessSound = new GreenfootSound("chess.mp3");

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Superclass for the maze parts of the chessboard
+ * Piece is a superclass for all the slots of the chessboard 2d array created in the Chessboard world.
  * 
  * @Fiona Ho
  * @version final

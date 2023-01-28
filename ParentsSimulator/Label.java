@@ -22,6 +22,7 @@ public class Label extends Actor {
     
     /**
      * Constructors of Label
+     * @param labelText the text shows on the screen
      */
     public Label(int labelText) {
         this(labelText + "");
@@ -29,6 +30,7 @@ public class Label extends Actor {
     
     /**
      * Constructors of Label
+     * @param labelText the text shows on the screen
      */
     public Label(String labelText) {
         this(labelText, 25);
@@ -36,6 +38,8 @@ public class Label extends Actor {
     
     /**
      * Constructors of Label
+     * @param labelText the text shows on the screen
+     * @param labelSize the size of the text shows on the screen
      */
     public Label(String labelText, int labelSize) {
         this(labelText, labelSize, Color.GRAY);
@@ -43,6 +47,8 @@ public class Label extends Actor {
     
     /**
      * Constructors of Label
+     * @param labelText the text shows on the screen
+     * @param labelSize the size of the text shows on the screen
      */
     public Label(int labelText, int labelSize) {
         this(labelText + "", labelSize);
@@ -50,6 +56,9 @@ public class Label extends Actor {
     
     /**
      * King Constructors of Label
+     * @param labelText the text shows on the screen
+     * @param labelSize the size of the text shows on the screen
+     * @param labelColor the color of the text shows on the screen
      */
     public Label(String labelText, int labelSize, Color labelColor) {
         this.labelText = labelText;
@@ -60,6 +69,9 @@ public class Label extends Actor {
     
     /**
      * Constructors of Label
+     * @param labelText the text shows on the screen
+     * @param labelSize the size of the text shows on the screen
+     * @param labelColor the color of the text shows on the screen
      */
     public Label(int labelText, int labelSize, Color labelColor) {
         this(labelText + "", labelSize, labelColor);
@@ -74,6 +86,7 @@ public class Label extends Actor {
     
     /**
      * Method to update the Label
+     * @param labelText the text shows on the screen
      */
     public void updateLabel(int labelText) {
         this.labelText = labelText + "";
@@ -82,6 +95,7 @@ public class Label extends Actor {
     
     /**
      * Method to update the Label
+     * @param labelText the text shows on the screen
      */
     public void updateLabel(String labelText) {
         this.labelText = labelText;

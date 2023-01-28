@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class OpeningScreen here.
+ * OpeningScreen is a subclass of Screens. This world appears before the main chess mini game (Chessboard world) for game instructions.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version comment
  */
 public class OpeningScreen extends Screens
 {
@@ -12,7 +12,7 @@ public class OpeningScreen extends Screens
     
     /**
      * Constructor for objects of class OpeningScreen.
-     * 
+     * @param mainWorld the main game world where the player returns after playing the chess minigame
      */
     public OpeningScreen(MainWorld main) {
         super();

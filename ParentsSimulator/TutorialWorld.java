@@ -6,7 +6,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author: Gloria Chan
  * @version: January 23, 2023
  * 
- * CREDIT: Yuxin's StoryWorld for reference.
  */
 public class TutorialWorld extends World
 {

@@ -7,12 +7,15 @@ import greenfoot.*;
  * @version 2023-01-21
  */
 public class RandomChoice extends Actor {
+    // declare variables and objects
     private String answer;
     private int[] results;
     private GreenfootSound clickSound;
 
     /**
      * Constructor for objects of class RandomChoice
+     * @param answer a string store the answer
+     * @param results an int[] to store the results of the answer
      */
     public RandomChoice(String answer, int[] results) {
         this.answer = answer;
@@ -26,6 +29,10 @@ public class RandomChoice extends Actor {
         clickSound = new GreenfootSound("click.wav");
     }
     
+    /**
+     * Act - do whatever the RandomChoice wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         if (Greenfoot.mouseClicked(this)) {
             clickSound.play();

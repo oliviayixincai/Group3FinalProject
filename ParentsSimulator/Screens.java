@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Screens here.
+ * Screens is an abstract superclass for the worlds in between the main game world and the chess minigame.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Original wood background from Vecteezy https://www.vecteezy.com/free-vector/cartoon-wood (has been edited)
+ * 
+ * @Fiona Ho
+ * @version comment
  */
 public abstract class Screens extends World
 {

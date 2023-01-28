@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class ColorBar here.
  * 
  * @author Gloria Chan
- * @version !! DATE !!
+ * @version 2023-01-24
  */
 public class ColorBar extends PixelArtTools
 {

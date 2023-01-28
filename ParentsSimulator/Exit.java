@@ -1,16 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Exit here.
+ * Exit is a subclass of Piece, where it creates a WinScreen world if touched by a Player. It is the end of the maze in the Chessboard world.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version comment
  */
 public class Exit extends Piece
 {
     private Chessboard w;
     private MainWorld mainWorld;
     
+    /**
+     * Constructor for Exit.
+     * 
+     * @param mainWorld the main game world where the player returns after playing the chess minigame
+     */
     public Exit(MainWorld main) {
         /*
         GreenfootImage i = new GreenfootImage(50, 50);

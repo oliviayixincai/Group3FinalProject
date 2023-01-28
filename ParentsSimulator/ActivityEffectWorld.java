@@ -3,7 +3,8 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 /**
- * It is a world to show the activities effects.
+ * It is a world to show the activities with fade effects.The activities will show on the screen follows the order that how player
+ * dragged. The first dragged activity will show the first, the last dragged activity will show at the very end.
  * 
  * @author Yixin Cai
  * @version 2023-01-21

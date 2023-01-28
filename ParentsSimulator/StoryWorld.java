@@ -6,37 +6,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @Yuxin Li 
  * @version Jan 2023
- * 
- * get married picture by RapidEye
- * https://www.istockphoto.com/photo/male-and-female-hands-clasped-gm931136214-255235764
- * https://hackspirit.com/differences-between-falling-in-love-and-flowing-in-love/
- * 
- * pregnant picture
- * https://www.madeformums.com/pregnancy/early-pregnancy-tests-are-giving-too-many-false-results/
- * https://www.thehealthy.com/pregnancy/positive-pregnancy-test/
- * 
- * hospital picture
- * https://unsplash.com/s/photos/hospital-room
- * https://wexnermedical.osu.edu/blog/patients-value-control-privacy-in-hospital-rooms
- * 
- * baby pic
- * https://www.peakpx.com/en/hd-wallpaper-desktop-alevu
- * 
- * backgroundMusic
- * Music by <a href="https://pixabay.com/users/23117649-23117649/?utm_source=link-attributi
- * on&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=7741">23117649</a> from
- * <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_c
- * ampaign=music&amp;utm_content=7741">Pixabay</a>
- * 
- * welcome picture by dpproductions
- * https://www.istockphoto.com/photos/front-door
- * https://abeautifulmess.com/first-things-first-a-pink-front-door/
- * 
- * story block by user2104819
- * https://www.freepik.com/premium-vector/set-ui-elements-2d-games-apps-jungle-game-ui-part-2_4267333.htm
- * 
- * arrows by user22934206
- * https://www.freepik.com/premium-vector/collection-set-wooden-game-ui-frame-template-pop-up-interface-gui-asset-elements_11707777.htm#from_view=detail_alsolike
  */
 
 public class StoryWorld extends World

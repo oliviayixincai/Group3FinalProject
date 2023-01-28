@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Spawns a visual chessboard in black/white squares
  * 
+ * Square pngs by Fiona
+ * 
  * @Fiona Ho
  * @version final
  */

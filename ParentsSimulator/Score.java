@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Displays the points that will be won in Chess game if completed at that point
+ * Score is a class that displays the points that will be won in Chess game if completed at that point, using methods from the LabelAbstract class
  * 
  * @Fiona Ho
- * @version final
+ * @version comment
  */
 public class Score extends LabelAbstract
 {

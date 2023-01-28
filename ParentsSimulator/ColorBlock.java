@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Pixel here.
  * 
  * @author Gloria Chan
- * @version !! DATE !!
+ * @version 2023-01-23
  */
 public class ColorBlock extends PixelArtTools
 {

@@ -6,6 +6,15 @@ import java.util.Random;
 /**
  * Chessboard is the world for the chess maze minigame. It will spot
  * 
+ * ASSETS:
+ * Wood background from Vecteezy (has been edited)
+ * https://www.vecteezy.com/free-vector/cartoon-wood
+ * 
+ * Chess piece images from Wikimedia Commons (have been edited)
+ * https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces
+ * 
+ * Timer class and methods for stopwatch from Mr. Cohen
+ * 
  * @Fiona Ho 
  * @version final
  */
@@ -22,6 +31,12 @@ public class Chessboard extends World {
     private Score score;
     private MainWorld main;
     
+    
+    /**
+     * Constructor for Chessboard.
+     * 
+     * @param mainWorld the main game world where the player returns after playing the chess minigame
+     */
     public Chessboard(MainWorld mainWorld) {
         super(1000, 700, 1);
         //GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
@@ -65,10 +80,18 @@ public class Chessboard extends World {
         }
     }
     
+    /**
+     * Returns possible amount of points awarded based on time remaining in game (26 at most, 2 at least)
+     * @return int possible amount of points awarded based on time remaining in game (26 at most, 2 at least)
+     */
     public int checkPoints() {
         return (60 - getTimeInSeconds()) /5 *2 + 2;
     }
     
+    /**
+     * Creates two 2d arrays, one for the chessboard (board[][]) and one for the chess piece arrangement (chess[][]) and adds them to the world.
+     * Randomizes which possible maze is used, and shuffles ArrayList images of all possible chess pieces excluding kings for the walls.
+     */
     public void setBoard() {
         Square[][] board = new Square[8][8];
         for(int row = 0; row < 8; row++) {
@@ -118,10 +141,17 @@ public class Chessboard extends World {
         }
     }
     
+    /**
+     * Sends user's Player back to top left square on the chessboard
+     */
     public void respawn() {
         addObject(player, xOffset, yOffset);
     }
     
+    /**
+     * buildMaze_() methods all generate different mazes out of Pieces and Walls. Walls are added to ArrayList pieces 
+     * so its images can be randomized in setBoard()
+     */
     public void buildMaze1() {
         chess[7][7] = new Exit(main);
         for(int i = 0; i < 3; i++) {
@@ -222,10 +252,16 @@ public class Chessboard extends World {
         chess[0][3] = new Piece();
     }
     
+    /**
+     * Adds chess[][] Pieces into ArrayList pieces
+     */
     public void addPieces(int row, int col) {
         pieces.add(chess[row][col]);
     }
     
+    /**
+     * Adds chess pieces pngs to ArrayList images
+     */
     public void addImages() {
         // images from https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces
         images.add(new GreenfootImage("wQueen.png"));

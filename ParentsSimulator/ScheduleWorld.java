@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import greenfoot.GreenfootImage;
 
 /**
- * This is a world  
+ * This is a world  for player to schedule the time table, which allows player drag activities to the blocks in 
+ * the time tabel along with sound effect. If player didn't drag the activity into correct place, the activity will 
+ * automatically flies back to its original place. Whent the time table is full, finish button will apears for player
+ * to click to move to the next part.
  * 
  * @author Yixin Cai
  * @version 2023-01-21
@@ -19,6 +22,7 @@ public class ScheduleWorld extends AbstractWorld
     private static final int SCHEDULE_ITEM_X0 = 503;
     private static final int SCHEDULE_ITEM_Y0 = 335;
     
+    // declare objects
     private GreenfootImage scheduleText;
     private Label ageLabel;
     private Button finishButton;
@@ -45,6 +49,7 @@ public class ScheduleWorld extends AbstractWorld
     {
         super(mainWorld);
 
+        // initialize the objects
         setBackground(new GreenfootImage("backgroundSchedule.png"));
         addObject(new Label(this.mainWorld.getStageText()), 500, 20);
         this.finishButton = new Button("buttonSchedule.png");

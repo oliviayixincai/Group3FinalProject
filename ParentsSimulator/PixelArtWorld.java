@@ -3,8 +3,12 @@ import java.util.ArrayList;
 
 /**
  * This program runs the pixel art minigame.
+ * KNOWN BUG: The timer keeps counting down when the player pauses the game. 
+ * As a result, this bug messes up with the overall scoring system as it displays negative time elapsed.
+ * Yixin and Yuxin informed me that it may be stemming from the Timer class but I am not too sure.
  * 
- * CREDIT: Jordan Cohen for returnTimeInSeconds() method (found in Timer class).
+ * CREDIT: Jordan Cohen for returnTimeInSeconds() method (found in Timer class) and for
+ * the use of nanoTime() method to set up start and end time.
  * 
  * @author Gloria Chan
  * @version January 18, 2023
@@ -95,6 +99,7 @@ public class PixelArtWorld extends World
      * Starts timer to track user play time and generates a random pixel art for the user
      * to complete. Initalizes the pixel art grid and the colour bars.
      * 
+     * @param mainWorld a MainWorld
      */
     public PixelArtWorld(MainWorld mainWorld)
     {    

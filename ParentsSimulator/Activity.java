@@ -11,12 +11,18 @@ public class Activity extends Actor
 {
     public static final int SPEED = 20;
 
+    // declare the variables
     private String name;
     private int originalX;
     private int originalY;
     private boolean isMouseDown;
     private int[] points;
 
+    /**
+     * The constructor of the Activity.
+     * @param name the name of the activity
+     * @param points the points that the activity can add to the child
+     */
     public Activity(String name, int[] points) {
         this.name = name;
         this.points = points;
@@ -25,6 +31,9 @@ public class Activity extends Actor
         setImage(new GreenfootImage(imageFileName));
     }
     
+    /**
+     * This is a method will be called when the class 
+     */
     public void addedToWorld(World w) {
         originalX = getX();
         originalY = getY();

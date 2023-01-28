@@ -8,10 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FadeEffect extends Actor
 {
+    // declare and inilialize all the variables
     protected int duration = 90;
     
     private int tik = 0;
     
+    /**
+     * The constructor of FadeEffect.
+     * @param image a GreenfootImage
+     */
     public FadeEffect(GreenfootImage image) {
         image.setTransparency(0);
         setImage(image);
@@ -38,6 +43,11 @@ public class FadeEffect extends Actor
         }
     }
     
+    /**
+     * This is a method used to fade the image.
+     * @param numerator this is an int to calculate the time of the fade effect
+     * @param dinominator this is an int to calculate the time of the fade effect
+     */
     private void fade(int numerator, int dinominator) {
         double percent = numerator / (double)dinominator;
         int newTransparency = (int)(percent * 255);

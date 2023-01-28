@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Wall here.
+ * Wall is a subclass of Piece, where it can be detected by Player to block its movement.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho 
+ * @version comment
  */
 public class Wall extends Piece
 {

@@ -48,6 +48,7 @@ public class Card extends Actor
         this.soundNum = sounds.length;
         this.soundIndex = 0;
     }
+    
     public void act()
     {
         // Add your action code here.

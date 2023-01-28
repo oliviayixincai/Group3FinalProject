@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Piece here.
+ * Player is a subclass of Piece controlled by the user to navigate the maze in Chessboard world. It uses the keyboard for directions and
+ * responds to the edge of the board and the Wall class. A new WinScreen is set as the world when it touches the Exit class.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Fiona Ho
+ * @version comment
  */
 public class Player extends Piece
 {
@@ -18,6 +19,9 @@ public class Player extends Piece
     private int count;
     private int half;
     
+    /**
+     * Constructor for Player.
+     */
     public Player() {
         /*
         pic = new GreenfootImage(50, 50);
@@ -47,6 +51,9 @@ public class Player extends Piece
         }
     }
     
+    /**
+     * Sets a positive or negative value for x and y directions based on which keys are pressed on the keyboard
+     */
     public void checkDir() {
         int speed = 1;
         if(Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
@@ -63,6 +70,11 @@ public class Player extends Piece
         }
     }
     
+    /**
+     * Checks whether Player is in a position to move. If Player is on the edge of the board, it stops movement and moves Player back to initial
+     * starting position.
+     * @return boolean True if can move, false otherwise
+     */
     public boolean canMove() {
         int x = getX();
         int y = getY();
@@ -101,6 +113,9 @@ public class Player extends Piece
         return true;
     }
     
+    /**
+     * Moves the Player along based on direction set in checkDir(). If a Wall is detected, its position will be reset away from touching the Wall.
+     */
     public void move() {
         half = pic.getWidth()/2;
         
