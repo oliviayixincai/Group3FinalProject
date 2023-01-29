@@ -79,8 +79,7 @@ public class ActivityEffectWorld extends AbstractWorld {
     
     /**
      * This is a method used to start the random choice section.
-     * @param questionNumber this is a int to indicate the index
-     * of questions, answers and the results.
+     * @param questionNumber this is a int to indicate the index of questions, answers and the results.
      */
     private void startRandomChoice(int questionNumber) {
         int stage = this.mainWorld.getStage();
@@ -105,8 +104,8 @@ public class ActivityEffectWorld extends AbstractWorld {
     
     /**
      * This is a method to end the randome choice section.
-     * It can update the points, which is the results of the questions
-     * , remove it self after and set background.
+     * It can update the points, which is the results of the questions, 
+     * remove it self after and set background.
      * @param results It is an int[] used to store the points that need to be updated
      */
     public void finishRandomChoice(int[] results) {

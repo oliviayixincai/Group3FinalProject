@@ -4,14 +4,7 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * Chessboard is the world for the chess maze minigame. It will spot
- * 
- * ASSETS:
- * Wood background from Vecteezy (has been edited)
- * https://www.vecteezy.com/free-vector/cartoon-wood
- * 
- * Chess piece images from Wikimedia Commons (have been edited)
- * https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces
+ * Chessboard is the world for the chess maze minigame.
  * 
  * Timer class and methods for stopwatch from Mr. Cohen
  * 
@@ -254,6 +247,8 @@ public class Chessboard extends World {
     
     /**
      * Adds chess[][] Pieces into ArrayList pieces
+     * @param row the row index for the piece to be added
+     * @param col the col index for the piece to be added
      */
     public void addPieces(int row, int col) {
         pieces.add(chess[row][col]);
@@ -280,18 +275,34 @@ public class Chessboard extends World {
         images.add(new GreenfootImage("bRook.png"));
     }
     
+    /**
+     * Method to get size of the square
+     * @return int size of the square
+     */
     public int getSquareSize() {
         return squareSize;
     }
     
+    /**
+     * Method to get x offset
+     * @return int x offset
+     */
     public int getxOffset() {
         return xOffset;
     }
     
+    /**
+     * Method to get y offset
+     * @return int y offset
+     */
     public int getyOffset() {
         return yOffset;
     }
 
+    /**
+     * Method to get points
+     * @return int points
+     */
     public int getPoints() {
         return points;
     }

@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * Write a description of class RandomChoice here.
+ * A class represents a choice/answer in the RandomChoice effect.
  * 
  * @author Yixin Cai
  * @version 2023-01-21

@@ -173,6 +173,16 @@ import java.util.*;
  * The other little sound effect: https://pixabay.com
  * Background image from: https://www.pinterest.ca/pin/18366310973098552/
  * 
+ * Wood background from Vecteezy (has been edited)
+ * https://www.vecteezy.com/free-vector/cartoon-wood
+ * 
+ * Chess piece images from Wikimedia Commons (have been edited)
+ * https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces
+ * 
+ * KNOWN BUG: The timer keeps counting down when the player pauses the mini game. 
+ * As a result, this bug messes up with the overall scoring system as it displays negative time elapsed.
+ * Yixin and Yuxin informed me that it may be stemming from the Timer class but I am not too sure.
+ * 
  * @author Yixin Cai
  * @version 2023-01-22
  */
@@ -345,6 +355,7 @@ public class MainWorld extends World
     
     /**
      * This is a method to show the text about the life stage of the child.
+     * @return String the text for showing current stage
      */
     public String getStageText() {
         String text = "Stage: ";

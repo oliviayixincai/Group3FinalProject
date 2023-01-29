@@ -99,7 +99,7 @@ public class PixelArtWorld extends World
      * Starts timer to track user play time and generates a random pixel art for the user
      * to complete. Initalizes the pixel art grid and the colour bars.
      * 
-     * @param mainWorld a MainWorld
+     * @param mainWorld takes in information from the MainWorld
      */
     public PixelArtWorld(MainWorld mainWorld)
     {    
@@ -177,6 +177,8 @@ public class PixelArtWorld extends World
     /**
      * Method that makes a numbered grid (2D array) with numbers that the player must fill in.
      * Each grid is filled with different values (depending on the art).
+     * @param length provide specifications for the dimensions of the grid.
+     * @param height provide specifications for the dimensions of the grid.
      */
     private void makeGrid(int length, int height)
     {
@@ -199,12 +201,13 @@ public class PixelArtWorld extends World
     
     /**
      * Method that adds boxes to represent the colours of the pixel art (its corresponding number is also displayed).
+     * @param numColours is the number of colours that will be represented in the colour box
      */
     private void makeColourBar(int numColours)
     {
         for (int i = 0; i < numColours; i++)
         {
-            ColorDisplay bar = new ColorDisplay(32, colours[i], i + 1);
+            ColorBar bar = new ColorBar(32, colours[i], i + 1);
             int x;
             int y;
             if (i % 2 == 0)
@@ -272,6 +275,7 @@ public class PixelArtWorld extends World
     
     /**
      * Method that returns the colour that the player has selected to paint with.
+     * @return Color colour that the player has selected
      */
     public Color returnColour()
     {
@@ -280,6 +284,7 @@ public class PixelArtWorld extends World
     
     /**
      * Method that returns the time in seconds.
+     * @return int the time in seconds
      */
     private int returnTimeInSeconds()
     {
@@ -288,6 +293,7 @@ public class PixelArtWorld extends World
     
     /**
      * Methodd that checks to see whether the user is completed the pixel art correctly or not.
+     * @return boolean true if game completed, false otherwise
      */
     private boolean returnCompletion()
     {

@@ -32,7 +32,8 @@ public class Activity extends Actor
     }
     
     /**
-     * This is a method will be called when the class 
+     * This method is called by the Greenfoot system when this actor has been inserted into the world.
+     * @param w The world the object was added to.
      */
     public void addedToWorld(World w) {
         originalX = getX();
@@ -63,6 +64,10 @@ public class Activity extends Actor
         }
     }
     
+    /**
+     * Move the activity towards original location. It moves the activity one step at a time.
+     * The distance of each time is based on the SPEED constant value in this class.
+     */
     private void checkMove() {
         int x = getX();
         int y = getY();
@@ -83,16 +88,29 @@ public class Activity extends Actor
         }
     }
     
+    /**
+     * Set the activity to the given coordinate.
+     * @param x x coordinate to be set
+     * @param y y coordinate to be set
+     */
     public void setActivity(int x, int y) {
         setLocation(x, y);
         this.originalX = x;
         this.originalY = y;
     }
     
+    /**
+     * Get the name of the activity
+     * @return String name of the activity
+     */
     public String getName() {
         return this.name;
     }
     
+    /**
+     * Get the points of the activity
+     * @return int[] points of the activity
+     */
     public int[] getPoints() {
         return this.points;
     }

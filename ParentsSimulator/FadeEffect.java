@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class FadeEffect here.
+ * A class that represents a fade effect.
  * 
  * @author Yixin Cai
  * @version 2023-01-21

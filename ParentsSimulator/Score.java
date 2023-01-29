@@ -12,6 +12,9 @@ public class Score extends LabelAbstract
         this.value = value;
     }
     
+    /**
+     * Method to update image of the actor
+     */
     public void updateImage() {
         GreenfootImage d = new GreenfootImage("Total Points: \n" + getValue(), 40, border, transparent);
         setImage(d);

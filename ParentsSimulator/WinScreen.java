@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WinScreen here.
+ * Show the screen when the player wins the chess maze game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author @Fiona Ho 
+ * @version final
  */
 public class WinScreen extends Screens
 {

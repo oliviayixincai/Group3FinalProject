@@ -110,7 +110,8 @@ public class ScheduleWorld extends AbstractWorld
     }
     
     /**
-     * This is a method used to
+     * This is a method used to trying removing an activity from the schedule table.
+     * @param activity the activity to be removed from schedule table
      */
     private void tryClearActivity(Activity activity) {
         for (int i = 0; i < scheduleTable.length; i++) {
@@ -173,8 +174,7 @@ public class ScheduleWorld extends AbstractWorld
     
     /**
      * This is a method to determine weather can finish the scheduleTable
-     * @return boolean True if the scheduleTable is full of activities,
-     * false otherwise
+     * @return boolean True if the scheduleTable is full of activities, false otherwise
      */
     private boolean canFinish() {
         for (int i = 0; i < scheduleTable.length; i++) {

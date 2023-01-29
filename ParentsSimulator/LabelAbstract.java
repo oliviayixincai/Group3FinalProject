@@ -23,6 +23,7 @@ public abstract class LabelAbstract extends Actor
     
     /**
      * when the label is added to world, show the initial value
+     * @param the world the object was added to
      */
     public void addedToWorld(World w){
         setDisplayer(value);
@@ -41,6 +42,7 @@ public abstract class LabelAbstract extends Actor
     
     /**
      * return the current value of label
+     * @return int current value of label
      */
     public int getValue() {
         return value;
